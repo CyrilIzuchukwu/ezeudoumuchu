@@ -1,0 +1,384 @@
+@font-face {
+    font-family: "Cabinet Grotesk";
+    src: url("/assets/css/fonts/cabinet/CabinetGrotesk-Thin.otf") format("opentype");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cabinet Grotesk";
+    src: url("/assets/css/fonts/cabinet/CabinetGrotesk-Extralight.otf") format("opentype");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cabinet Grotesk";
+    src: url("/assets/css/fonts/cabinet/CabinetGrotesk-Light.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cabinet Grotesk";
+    src: url("/assets/css/fonts/cabinet/CabinetGrotesk-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cabinet Grotesk";
+    src: url("/assets/css/fonts/cabinet/CabinetGrotesk-Medium.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cabinet Grotesk";
+    src: url("/assets/css/fonts/cabinet/CabinetGrotesk-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cabinet Grotesk";
+    src: url("/assets/css/fonts/cabinet/CabinetGrotesk-Extrabold.otf") format("opentype");
+    font-weight: 800;
+    font-style: normal;
+}
+
+:root {
+    --cabinet-font: "Cabinet Grotesk", sans-serif;
+}
+
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.banner-area {
+    position: relative;
+    background: url('/assets/images/banner.jpg') no-repeat;
+    background-size: cover;
+    padding: 90px 0;
+    background-position: center;
+}
+
+
+.banner-area .overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+}
+
+.banner-area h1 {
+    color: #ffffff;
+    font-size: 24px;
+    margin: 0;
+    text-transform: uppercase;
+    z-index: 2;
+    position: relative;
+    font-family: var(--cabinet-font) !important;
+    text-align: center;
+    font-weight: 600;
+    margin: auto;
+    width: 65%;
+}
+
+.banner-area .bannner-content {
+    position: relative;
+    z-index: 2;
+}
+
+.topbar {
+    background: rgba(0, 0, 0, 1) !important;
+}
+
+.banner-area .date {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 0;
+    color: #d7c365;
+}
+
+
+.main-content {
+    padding-top: 40px;
+}
+
+.sticky-col {
+    position: sticky;
+    top: 80px;
+    /* Stick to top */
+    align-self: flex-start;
+    /* Prevents stretching in flexbox */
+    /* height: 100vh; */
+    /* Full viewport height */
+    overflow: hidden;
+    /* Prevent scrollbar */
+}
+
+/* Hide scrollbar but keep scrolling */
+.sticky-col::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+.sticky-col {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+}
+
+/* .sticky-col {
+    height: calc(100vh - 100px);
+} */
+
+@media (max-width: 767px) {
+    .sticky-col {
+        position: static;
+        height: auto;
+    }
+}
+
+.obituary-photo-frame {
+    border: 1px solid #d5d5d5;
+    padding: 20px;
+}
+
+.name-title {
+    margin-top: 15px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+.footer-img {
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+.footer-img img {
+    position: absolute;
+    width: 140px;
+    top: -130px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+
+
+
+
+
+
+/* biography biography biography biography biography biography biography biography biography biography biography biography biography biography biography biography   */
+.post-content {
+    line-height: 1.8;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tribute-header h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+    font-weight: 300;
+}
+
+.author {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.post-content h2 {
+    font-size: 1.2em;
+    color: #8B0000;
+    /* Deep red for reverence */
+    margin-top: 30px;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 5px;
+}
+
+.post-content p {
+    font-size: 14px;
+}
+
+p {
+    margin-bottom: 0px;
+}
+
+blockquote {
+    font-style: italic;
+    color: #555;
+    border-left: 4px solid #8B0000;
+    padding-left: 20px;
+    margin: 20px 0;
+    padding: 15px;
+}
+
+blockquote footer {
+    font-style: normal;
+    font-weight: bold;
+    color: #777;
+}
+
+.final-paragraph {
+    font-size: 1.1em;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.signature {
+    text-align: right;
+    font-style: italic;
+    margin-top: 20px;
+    font-family: 'Lora', serif;
+}
+
+
+.site-footer-bottom p {
+    font-family: 'Lora', serif !important;
+}
+
+
+
+
+
+.portrait-frame {
+    position: relative;
+    border: 8px solid #fff;
+    box-shadow: 0 0 0 1px #d1c7b7, 0 4px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    padding: 20px;
+}
+
+.crest-ornament {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 30px;
+    background: #8B0000;
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+    text-align: center;
+    color: #fff;
+}
+
+.heraldic-title h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #222;
+    margin-bottom: 0.5rem;
+}
+
+
+
+.title-plaque {
+    background: #8B0000;
+    color: #f8f5f0;
+    padding: 0.5rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    margin: 0 auto 1rem;
+    border-radius: 4px;
+}
+
+.royal-quote {
+    border-left: 4px solid #8B0000;
+    background: #f8f5f0;
+    padding: 1.5rem;
+    position: relative;
+}
+
+.quote-icon {
+    font-size: 4rem;
+    position: absolute;
+    top: -1rem;
+    left: 0.5rem;
+    color: rgba(139, 0, 0, 0.1);
+}
+
+
+
+
+
+/* farewell .topbar  */
+.farewell-ticker {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    position: relative;
+    padding-block: 10px;
+}
+
+.ticker-container {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll 30s linear infinite;
+}
+
+.ticker-message {
+    display: inline-block;
+    margin-right: 50px;
+    font-family: 'Lora', serif;
+    font-size: 12.4px;
+    color: #fff;
+    font-weight: 500;
+    padding: 5px 0;
+    font-style: italic;
+}
+
+/* Pause animation on hover */
+.farewell-ticker:hover .ticker-container {
+    animation-play-state: paused;
+}
+
+/* Gradient fade effects */
+.farewell-ticker::before,
+.farewell-ticker::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    z-index: 2;
+}
+
+.farewell-ticker::before {
+    left: 0;
+    background: linear-gradient(to right, #f8f5f0, transparent);
+}
+
+.farewell-ticker::after {
+    right: 0;
+    background: linear-gradient(to left, #f8f5f0, transparent);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}

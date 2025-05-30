@@ -106,6 +106,10 @@
         font-weight: 600 !important;
     }
 
+    .tribute-body p {
+        font-weight: 600 !important;
+    }
+
     p {
         margin-bottom: 0px;
     }

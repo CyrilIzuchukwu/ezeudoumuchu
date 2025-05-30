@@ -82,7 +82,7 @@
                             <div class="post-content">
                                 <div class="tribute-header">
                                     <h1>EZEUDO UMUCHU'S TIMELESS LEGACY OF WISDOM AND INFLUENCE</h1>
-                                    <p class="author">By Dr. Tony Olisa Mbeki</p>
+                                    <!-- <p class="author">By Dr. Tony Olisa Mbeki</p> -->
                                 </div>
 
                                 <div class="intro-quote">
@@ -93,7 +93,7 @@
                                 </div>
 
                                 <div class="tribute-body">
-                                    <p>Chief Sir Sylvester Chukwudozie Ezeokenwa, KSJI (Ezeudo Umuchu), was one such
+                                    <p>Chief Sir Sylvester Anyarue Chukwuma Ezeokenwa, KSJI (Ezeudo Umuchu: Ichie Ezenwata), was one such
                                         man. Some 70 years ago, he was born. On Thursday, May 15, 2025, he slipped away
                                         quietly—just as he lived—leaving behind footprints too deliberate to be erased.
                                     </p>

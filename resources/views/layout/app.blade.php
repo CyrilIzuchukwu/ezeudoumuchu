@@ -4,7 +4,7 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Obsequy - Funeral Home Responsive HTML5 Template</title>
+    <title>In Memory Of Ezeudo - Umuchu</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">

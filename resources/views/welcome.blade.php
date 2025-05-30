@@ -341,7 +341,7 @@
                                                 class="form-control input-lg" required>
                                         </div>
                                         <div class="col-md-4">
-                                            <input name="email" type="email" placeholder="Your email"
+                                            <input name="email" type="email" placeholder="Your email (Optional)"
                                                 class="form-control input-lg" required>
                                         </div>
                                     </div>
@@ -478,8 +478,15 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-lg mt-3" style="color: white" data-dismiss="modal">Edit</button>
-                <button type="button" class="btn btn-primary btn-lg mt-3" onclick="submitForm()">Confirm &
-                    Submit</button>
+                <!-- <button type="button" class="btn btn-primary btn-lg mt-3" onclick="submitForm()">Confirm &
+                    Submit</button> -->
+                <button type="button" class="btn btn-primary btn-lg mt-3" id="submitBtn" onclick="submitForm()">
+                    <span id="submitText">Confirm & Submit</span>
+                    <span id="submitSpinner" style="display: none;">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Sending...
+                    </span>
+                </button>
             </div>
         </div>
     </div>
@@ -564,9 +571,36 @@
     }
 
     function submitForm() {
-        document.getElementById('condolenceForm').submit();
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const submitSpinner = document.getElementById('submitSpinner');
+
+        // Disable button & show spinner
+        submitBtn.disabled = true;
+        submitText.style.display = 'none'; // Hide text
+        submitSpinner.style.display = 'inline-flex'; // Show spinner
+
+        // Submit form after a brief delay (for visual feedback)
+        setTimeout(() => {
+            document.getElementById('condolenceForm').submit();
+        }, 500);
     }
 </script>
+
+<style>
+    #submitBtn {
+        position: relative;
+        min-width: 150px;
+        /* Prevent button resizing */
+    }
+
+    #submitSpinner {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+</style>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-lite.min.js"></script>

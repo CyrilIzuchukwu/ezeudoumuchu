@@ -42,7 +42,8 @@ class TributeController extends Controller
             'ip_address' => $ip,
         ]);
 
-        Mail::to('braintesser@gmail.com')->send(new CondolenceMail($condolence));
+        // Mail::to('braintesser@gmail.com')->send(new CondolenceMail($condolence));
+        Mail::to('alexcyril34@gmail.com')->send(new CondolenceMail($condolence));
 
         return redirect()->back()
                         ->with('success', 'Your tribute has been submitted successfully!')

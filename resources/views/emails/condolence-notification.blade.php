@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,33 +13,39 @@
             padding: 0;
             background-color: #f8f9fa;
         }
+
         .container {
             max-width: 600px;
             margin: 20px auto;
             background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
+
         .header {
             background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
             color: white;
             padding: 30px 20px;
             text-align: center;
         }
+
         .header h1 {
             margin: 0;
             font-size: 24px;
             font-weight: 300;
         }
+
         .header .icon {
             font-size: 48px;
             margin-bottom: 10px;
             display: block;
         }
+
         .content {
             padding: 30px;
         }
+
         .tribute-info {
             background: #f8f9fa;
             padding: 20px;
@@ -46,25 +53,30 @@
             margin: 20px 0;
             border-left: 4px solid #3498db;
         }
+
         .tribute-info h3 {
             margin-top: 0;
             color: #2c3e50;
             font-size: 18px;
         }
+
         .info-row {
             margin: 10px 0;
             display: flex;
             align-items: center;
         }
+
         .info-label {
             font-weight: bold;
             color: #34495e;
             min-width: 80px;
             margin-right: 10px;
         }
+
         .info-value {
             color: #2c3e50;
         }
+
         .message-box {
             background: #ffffff;
             border: 1px solid #e9ecef;
@@ -75,6 +87,7 @@
             line-height: 1.8;
             color: #495057;
         }
+
         .footer {
             background: #f8f9fa;
             padding: 20px;
@@ -83,6 +96,7 @@
             font-size: 14px;
             border-top: 1px solid #e9ecef;
         }
+
         .btn {
             display: inline-block;
             padding: 12px 24px;
@@ -93,6 +107,7 @@
             margin: 20px 0;
             font-weight: 500;
         }
+
         .memorial-quote {
             text-align: center;
             font-style: italic;
@@ -101,17 +116,20 @@
             border-top: 1px solid #ecf0f1;
             margin-top: 30px;
         }
+
         @media (max-width: 600px) {
             .container {
                 margin: 10px;
                 border-radius: 0;
             }
+
             .content {
                 padding: 20px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -126,23 +144,23 @@
 
             <div class="tribute-info">
                 <h3>Condolence Details</h3>
-                
+
                 <div class="info-row">
                     <span class="info-label">👤 Name:</span>
                     <span class="info-value">{{ $condolence->fullName }}</span>
                 </div>
-                
+
                 <div class="info-row">
                     <span class="info-label">📧 Email:</span>
                     <span class="info-value">{{ $condolence->email }}</span>
                 </div>
-                
+
                 <div class="info-row">
                     <span class="info-label">📅 Date:</span>
                     <span class="info-value">{{ $condolence->created_at->format('l, F j, Y \a\t g:i A') }}</span>
                 </div>
             </div>
-{{-- 
+            {{--
             <h3>💝 Tribute Message:</h3>
             <div class="message-box">
                 "{!! $condolence->tribute !!}"
@@ -167,4 +185,5 @@
         </div>
     </div>
 </body>
+
 </html>

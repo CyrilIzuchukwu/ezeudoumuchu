@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CondolenceMail;
 use App\Models\Condolence;
 use App\Notifications\CondolenceNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
 class TributeController extends Controller
@@ -40,8 +42,7 @@ class TributeController extends Controller
             'ip_address' => $ip,
         ]);
 
-        Notification::route('mail', config('mail.admin_email', 'admin@example.com'))
-                    ->notify(new CondolenceNotification($condolence));
+        Mail::to('braintesser@gmail.com')->send(new CondolenceMail($condolence));
 
         return redirect()->back()
                         ->with('success', 'Your tribute has been submitted successfully!')

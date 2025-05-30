@@ -142,14 +142,14 @@
                     <span class="info-value">{{ $condolence->created_at->format('l, F j, Y \a\t g:i A') }}</span>
                 </div>
             </div>
-
+{{-- 
             <h3>💝 Tribute Message:</h3>
             <div class="message-box">
-                "{{ $condolence->tribute }}"
-            </div>
+                "{!! $condolence->tribute !!}"
+            </div> --}}
 
             <div style="text-align: center;">
-                <a href="{{ url('/') }}" class="btn">View All Condolences</a>
+                <a href="{{ url('/') }}" class="btn text-white">View All Condolences</a>
             </div>
 
             <div class="memorial-quote">

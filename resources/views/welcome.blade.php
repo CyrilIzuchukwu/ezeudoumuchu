@@ -477,7 +477,7 @@
                 <p id="modalMessage" style="white-space: pre-wrap;"></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-lg mt-3" data-dismiss="modal">Edit</button>
+                <button type="button" class="btn btn-secondary btn-lg mt-3" style="color: white" data-dismiss="modal">Edit</button>
                 <button type="button" class="btn btn-primary btn-lg mt-3" onclick="submitForm()">Confirm &
                     Submit</button>
             </div>

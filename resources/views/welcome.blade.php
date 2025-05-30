@@ -27,7 +27,7 @@
                 <div class="col-md-5 sticky-col ">
                     <div class="heraldic-design">
                         <div class="portrait-frame">
-                            <img src="{{ asset('assets/images/profile1.jpeg') }}" alt="Portrait of Ezeudo Umuchu">
+                            <img src="{{ asset('assets/images/img2.jpg') }}" alt="Portrait of Ezeudo Umuchu">
                             <div class="crest-ornament">
                                 Ezeudo Umuchu
                             </div>
@@ -35,7 +35,7 @@
 
                         <div class="heraldic-title">
                             <div class="scroll-decoration">
-                                <h1>Chief Sir. Sylvester <span>Chukwudozie</span> Ezeokenwa</h1>
+                                <h1>Chief (Hon) Sir. Sylvester Anyarue Chukwuma Ezeokenwa</h1>
                             </div>
                             <!-- <div class="title-plaque">
                                 <span>Ezeudo Umuchu (KSJI)</span>

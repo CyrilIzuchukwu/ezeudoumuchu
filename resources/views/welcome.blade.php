@@ -194,8 +194,8 @@
                             @if(session('success') || session('error'))
                             <script>
                                 document.addEventListener('DOMContentLoaded', function() {
-                                    showToast('{{ session("success") ? "success" : "error" }}', 
-                                            '{{ session("success") ? session("success") : session("error") }}');
+                                    showToast('{{ session("success") ? "success" : "error" }}',
+                                        '{{ session("success") ? session("success") : session("error") }}');
                                 });
                             </script>
                             @endif
@@ -212,7 +212,7 @@
                                                 <div class="post-comment-content">
                                                     <h5>{{ $condolence->fullName }} says</h5>
                                                     <span
-                                                        class="meta-data">{{ $condolence->created_at->format('F d, Y \a\t h:i A') }}</span>
+                                                        class="meta-data">{{ $condolence->created_at->format('F d, Y') }}</span>
                                                     <div class="summernote-content">{!! $condolence->tribute !!}</div>
                                                 </div>
                                             </div>
@@ -392,13 +392,13 @@
 </div>
 
 <script>
-   function showToast(type, message) {
-    const toastContainer = document.getElementById('toastContainer');
-    const toast = document.createElement('div');
-    
-    // Set toast classes and styles based on type
-    toast.className = `toast show ${type === 'success' ? 'toast-success' : 'toast-error'}`;
-    toast.style.cssText = `
+    function showToast(type, message) {
+        const toastContainer = document.getElementById('toastContainer');
+        const toast = document.createElement('div');
+
+        // Set toast classes and styles based on type
+        toast.className = `toast show ${type === 'success' ? 'toast-success' : 'toast-error'}`;
+        toast.style.cssText = `
         padding: 15px 35px 15px 15px;
         margin-bottom: 15px;
         border-radius: 8px;
@@ -410,45 +410,45 @@
         max-width: 350px;
         min-height: 50px;
     `;
-    
-    // Set background based on type
-    if (type === 'success') {
-        toast.style.background = 'linear-gradient(135deg, #28a745 0%, #218838 100%)';
-    } else {
-        toast.style.background = 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)';
-    }
-    
-    // Create content wrapper for icon and message
-    const contentWrapper = document.createElement('div');
-    contentWrapper.style.cssText = `
+
+        // Set background based on type
+        if (type === 'success') {
+            toast.style.background = 'linear-gradient(135deg, #28a745 0%, #218838 100%)';
+        } else {
+            toast.style.background = 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)';
+        }
+
+        // Create content wrapper for icon and message
+        const contentWrapper = document.createElement('div');
+        contentWrapper.style.cssText = `
         display: flex;
         align-items: center;
         gap: 10px;
         padding-right: 5px;
     `;
-    
-    // Add icon based on type
-    const icon = document.createElement('i');
-    icon.className = type === 'success' ? 'fa fa-check-circle' : 'fa fa-exclamation-circle';
-    icon.style.cssText = `
+
+        // Add icon based on type
+        const icon = document.createElement('i');
+        icon.className = type === 'success' ? 'fa fa-check-circle' : 'fa fa-exclamation-circle';
+        icon.style.cssText = `
         font-size: 18px;
         flex-shrink: 0;
         margin-top: 1px;
     `;
-    
-    // Add message
-    const messageElement = document.createElement('div');
-    messageElement.style.cssText = `
+
+        // Add message
+        const messageElement = document.createElement('div');
+        messageElement.style.cssText = `
         flex: 1;
         line-height: 1.4;
         word-wrap: break-word;
     `;
-    messageElement.innerHTML = message;
-    
-    // Add close button positioned at top-right
-    const closeButton = document.createElement('button');
-    closeButton.innerHTML = '&times;';
-    closeButton.style.cssText = `
+        messageElement.innerHTML = message;
+
+        // Add close button positioned at top-right
+        const closeButton = document.createElement('button');
+        closeButton.innerHTML = '&times;';
+        closeButton.style.cssText = `
         position: absolute;
         top: 8px;
         right: 8px;
@@ -466,24 +466,24 @@
         transition: background-color 0.2s ease;
         z-index: 10;
     `;
-    
-    // Add hover effect to close button
-    closeButton.onmouseover = function() {
-        this.style.backgroundColor = 'rgba(255,255,255,0.2)';
-    };
-    closeButton.onmouseout = function() {
-        this.style.backgroundColor = 'transparent';
-    };
-    
-    closeButton.onclick = function() {
-        toast.style.animation = 'fadeOut 0.3s ease-out forwards';
-        setTimeout(() => toast.remove(), 300);
-    };
-    
-    // Add progress bar
-    const progressBar = document.createElement('div');
-    progressBar.className = 'toast-progress';
-    progressBar.style.cssText = `
+
+        // Add hover effect to close button
+        closeButton.onmouseover = function() {
+            this.style.backgroundColor = 'rgba(255,255,255,0.2)';
+        };
+        closeButton.onmouseout = function() {
+            this.style.backgroundColor = 'transparent';
+        };
+
+        closeButton.onclick = function() {
+            toast.style.animation = 'fadeOut 0.3s ease-out forwards';
+            setTimeout(() => toast.remove(), 300);
+        };
+
+        // Add progress bar
+        const progressBar = document.createElement('div');
+        progressBar.className = 'toast-progress';
+        progressBar.style.cssText = `
         position: absolute;
         bottom: 0;
         left: 0;
@@ -492,23 +492,23 @@
         background: rgba(255,255,255,0.3);
         animation: progressBar 5s linear forwards;
     `;
-    
-    // Assemble toast
-    contentWrapper.appendChild(icon);
-    contentWrapper.appendChild(messageElement);
-    toast.appendChild(contentWrapper);
-    toast.appendChild(closeButton);
-    toast.appendChild(progressBar);
-    
-    // Add to container
-    toastContainer.appendChild(toast);
-    
-    // Auto-remove after 5 seconds
-    setTimeout(() => {
-        toast.style.animation = 'fadeOut 0.3s ease-out forwards';
-        setTimeout(() => toast.remove(), 300);
-    }, 5000);
-}
+
+        // Assemble toast
+        contentWrapper.appendChild(icon);
+        contentWrapper.appendChild(messageElement);
+        toast.appendChild(contentWrapper);
+        toast.appendChild(closeButton);
+        toast.appendChild(progressBar);
+
+        // Add to container
+        toastContainer.appendChild(toast);
+
+        // Auto-remove after 5 seconds
+        setTimeout(() => {
+            toast.style.animation = 'fadeOut 0.3s ease-out forwards';
+            setTimeout(() => toast.remove(), 300);
+        }, 5000);
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
         // Initialize Summernote
@@ -604,6 +604,7 @@
             transform: translateX(100%);
             opacity: 0;
         }
+
         to {
             transform: translateX(0);
             opacity: 1;
@@ -615,6 +616,7 @@
             transform: translateX(0);
             opacity: 1;
         }
+
         to {
             transform: translateX(100%);
             opacity: 0;
@@ -625,6 +627,7 @@
         from {
             width: 100%;
         }
+
         to {
             width: 0%;
         }
@@ -648,7 +651,7 @@
             left: 10px;
             width: auto;
         }
-        
+
         .toast {
             max-width: none !important;
         }

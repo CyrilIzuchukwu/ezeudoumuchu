@@ -21,12 +21,12 @@
             <div class="header-nav">
                 <!-- start site logo -->
                 <div class="">
-                    <a href="/" title="Obsequy" class="default-logo">
+                    <a href="/" class="">
                         <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" width="70">
                     </a>
-                    <!-- <a href="/" title="Obsequy" class="default-retina-logo">
-                    <img src="assets/images/logo%402x.png" alt="Obsequy" width="204" height="46">
-                </a> -->
+                    <!-- <a href="/" class="">
+                        <img src="{{ asset('assets/images/logo.png') }}" alt="Obsequy" width="70">
+                    </a> -->
                 </div>
                 <!-- end site logo -->
                 <a href="#" id="menu-toggle">
@@ -37,7 +37,7 @@
                 <nav class="main-navigation">
                     <ul class="dd-menu sf-menu">
                         <li>
-                            <a href="" ><span></span>
+                            <a href=""><span></span>
                                 <img src="assets/images/KSJI-logo.webp" width="50" alt="">
                                 <img src="assets/images/flower-e1476975452944.png" alt="">
                             </a>

@@ -15,7 +15,8 @@
     <!-- end page banner -->
 </div>
 
-
+<!-- Toast Notification Container -->
+<div id="toastContainer" style="position: fixed; top: 50px; right: 50px; z-index: 9999; width: auto;"></div>
 
 <div class="main" role="main">
     <div id="content" class="content main-content">
@@ -190,117 +191,13 @@
                         <div role="tabpanel"
                             class="tab-pane {{ request()->has('tab') && request()->get('tab') == 'condolences' ? 'active' : '' }}"
                             id="condolences">
-                            <!-- Success Message Alert -->
-                            @if(session('success'))
-                            <div class="alert alert-success alert-dismissible fade in auto-dismiss-alert" role="alert"
-                                style="margin-bottom: 30px; padding: 25px 20px; border-left: 6px solid #28a745; border-radius: 8px; background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3); font-size: 18px; line-height: 1.6;">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"
-                                    style="font-size: 24px; opacity: 0.8;">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <div style="display: flex; align-items: center;">
-                                    <i class="fa fa-check-circle"
-                                        style="font-size: 28px; color: #28a745; margin-right: 15px; animation: pulse 2s infinite;"></i>
-                                    <div>
-                                        <strong
-                                            style="font-size: 20px; color: #155724; display: block; margin-bottom: 5px;">🎉
-                                            Tribute Submitted Successfully!</strong>
-                                        <span style="color: #155724; font-weight: 500;">{{ session('success') }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <style>
-                                @keyframes pulse {
-                                    0% {
-                                        transform: scale(1);
-                                    }
-
-                                    50% {
-                                        transform: scale(1.1);
-                                    }
-
-                                    100% {
-                                        transform: scale(1);
-                                    }
-                                }
-
-                                .alert .close:hover {
-                                    opacity: 1 !important;
-                                }
-
-                                .auto-dismiss-alert {
-                                    animation: slideIn 0.3s ease-out forwards;
-                                    transform: translateX(100%);
-                                }
-
-                                @keyframes slideIn {
-                                    to {
-                                        transform: translateX(0);
-                                    }
-                                }
-
-                                .alert-progress {
-                                    animation: progressBar 5s linear forwards;
-                                    transform-origin: left;
-                                }
-                            </style>
-                            @endif
-
-                            <!-- Error Message Alert -->
-                            @if(session('error'))
-                            <div class="alert alert-danger alert-dismissible fade in auto-dismiss-alert" role="alert"
-                                style="margin-bottom: 30px; padding: 25px 20px; border-left: 6px solid #dc3545; border-radius: 8px; background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%); box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3); font-size: 18px; line-height: 1.6;">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"
-                                    style="font-size: 24px; opacity: 0.8;">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <div style="display: flex; align-items: center;">
-                                    <i class="fa fa-exclamation-circle"
-                                        style="font-size: 28px; color: #dc3545; margin-right: 15px; animation: pulse 2s infinite;"></i>
-                                    <div>
-                                        <strong
-                                            style="font-size: 20px; color: #721c24; display: block; margin-bottom: 5px;">⚠️
-                                            Tribute Already Submitted</strong>
-                                        <span style="color: #721c24; font-weight: 500;">{{ session('error') }}</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <style>
-                                @keyframes pulse {
-                                    0% {
-                                        transform: scale(1);
-                                    }
-
-                                    50% {
-                                        transform: scale(1.1);
-                                    }
-
-                                    100% {
-                                        transform: scale(1);
-                                    }
-                                }
-
-                                .alert .close:hover {
-                                    opacity: 1 !important;
-                                }
-
-                                .auto-dismiss-alert {
-                                    animation: slideIn 0.3s ease-out forwards;
-                                    transform: translateX(100%);
-                                }
-
-                                @keyframes slideIn {
-                                    to {
-                                        transform: translateX(0);
-                                    }
-                                }
-
-                                .alert-progress {
-                                    animation: progressBar 5s linear forwards;
-                                    transform-origin: left;
-                                }
-                            </style>
+                            @if(session('success') || session('error'))
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    showToast('{{ session("success") ? "success" : "error" }}', 
+                                            '{{ session("success") ? session("success") : session("error") }}');
+                                });
+                            </script>
                             @endif
 
                             <div class="post-comments">
@@ -342,7 +239,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <input name="email" type="email" placeholder="Your email (Optional)"
-                                                class="form-control input-lg" required>
+                                                class="form-control input-lg">
                                         </div>
                                     </div>
                                     <button type="button" class="btn btn-primary btn-lg mt-3" onclick="showModal()">Save
@@ -478,8 +375,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-lg mt-3" style="color: white" data-dismiss="modal">Edit</button>
-                <!-- <button type="button" class="btn btn-primary btn-lg mt-3" onclick="submitForm()">Confirm &
-                    Submit</button> -->
                 <button type="button" class="btn btn-primary btn-lg mt-3" id="submitBtn" onclick="submitForm()">
                     <span id="submitText">Confirm & Submit</span>
                     <span id="submitSpinner" style="display: none;">
@@ -493,6 +388,124 @@
 </div>
 
 <script>
+   function showToast(type, message) {
+    const toastContainer = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    
+    // Set toast classes and styles based on type
+    toast.className = `toast show ${type === 'success' ? 'toast-success' : 'toast-error'}`;
+    toast.style.cssText = `
+        padding: 15px 35px 15px 15px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        color: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        animation: slideIn 0.3s ease-out forwards;
+        position: relative;
+        overflow: hidden;
+        max-width: 350px;
+        min-height: 50px;
+    `;
+    
+    // Set background based on type
+    if (type === 'success') {
+        toast.style.background = 'linear-gradient(135deg, #28a745 0%, #218838 100%)';
+    } else {
+        toast.style.background = 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)';
+    }
+    
+    // Create content wrapper for icon and message
+    const contentWrapper = document.createElement('div');
+    contentWrapper.style.cssText = `
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-right: 5px;
+    `;
+    
+    // Add icon based on type
+    const icon = document.createElement('i');
+    icon.className = type === 'success' ? 'fa fa-check-circle' : 'fa fa-exclamation-circle';
+    icon.style.cssText = `
+        font-size: 18px;
+        flex-shrink: 0;
+        margin-top: 1px;
+    `;
+    
+    // Add message
+    const messageElement = document.createElement('div');
+    messageElement.style.cssText = `
+        flex: 1;
+        line-height: 1.4;
+        word-wrap: break-word;
+    `;
+    messageElement.innerHTML = message;
+    
+    // Add close button positioned at top-right
+    const closeButton = document.createElement('button');
+    closeButton.innerHTML = '&times;';
+    closeButton.style.cssText = `
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: background-color 0.2s ease;
+        z-index: 10;
+    `;
+    
+    // Add hover effect to close button
+    closeButton.onmouseover = function() {
+        this.style.backgroundColor = 'rgba(255,255,255,0.2)';
+    };
+    closeButton.onmouseout = function() {
+        this.style.backgroundColor = 'transparent';
+    };
+    
+    closeButton.onclick = function() {
+        toast.style.animation = 'fadeOut 0.3s ease-out forwards';
+        setTimeout(() => toast.remove(), 300);
+    };
+    
+    // Add progress bar
+    const progressBar = document.createElement('div');
+    progressBar.className = 'toast-progress';
+    progressBar.style.cssText = `
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        width: 100%;
+        background: rgba(255,255,255,0.3);
+        animation: progressBar 5s linear forwards;
+    `;
+    
+    // Assemble toast
+    contentWrapper.appendChild(icon);
+    contentWrapper.appendChild(messageElement);
+    toast.appendChild(contentWrapper);
+    toast.appendChild(closeButton);
+    toast.appendChild(progressBar);
+    
+    // Add to container
+    toastContainer.appendChild(toast);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        toast.style.animation = 'fadeOut 0.3s ease-out forwards';
+        setTimeout(() => toast.remove(), 300);
+    }, 5000);
+}
+
     document.addEventListener('DOMContentLoaded', () => {
         // Initialize Summernote
         $('#summernote').summernote({
@@ -541,13 +554,6 @@
 
         // Activate the tab
         $(`.nav-tabs a[href="#${initialTab}"]`).tab('show');
-
-        // Auto-dismiss success alert after 8 seconds
-        @if(session('success'))
-        setTimeout(function() {
-            $('.alert-success').fadeOut('slow');
-        }, 8000);
-        @endif
     });
 
     function showModal() {
@@ -559,7 +565,7 @@
         const plainText = $('<div>').html(message).text().trim();
 
         if (!name || !email || !plainText) {
-            alert('Please fill in all fields.');
+            showToast('error', 'Please fill in all fields.');
             return;
         }
 
@@ -588,10 +594,66 @@
 </script>
 
 <style>
+    /* Toast animations */
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+
+    @keyframes progressBar {
+        from {
+            width: 100%;
+        }
+        to {
+            width: 0%;
+        }
+    }
+
+    /* Enhanced toast container positioning */
+    #toastContainer {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+        width: auto;
+        max-width: 90vw;
+    }
+
+    /* Responsive adjustments for mobile */
+    @media (max-width: 768px) {
+        #toastContainer {
+            top: 10px;
+            right: 10px;
+            left: 10px;
+            width: auto;
+        }
+        
+        .toast {
+            max-width: none !important;
+        }
+    }
+
+    /* Submit button styles */
     #submitBtn {
         position: relative;
         min-width: 150px;
-        /* Prevent button resizing */
     }
 
     #submitSpinner {
@@ -599,39 +661,30 @@
         align-items: center;
         gap: 0.5rem;
     }
+
+    /* Modal styles */
+    .modal-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .modal-title {
+        font-weight: 600;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-footer {
+        border-top: 1px solid #dee2e6;
+        padding: 15px 20px;
+    }
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-lite.min.js"></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Auto-dismiss alerts after 5 seconds
-        const alerts = document.querySelectorAll('.auto-dismiss-alert');
-
-        alerts.forEach(alert => {
-            // Start fade out after 5 seconds
-            setTimeout(() => {
-                alert.style.transition = 'opacity 0.5s ease';
-                alert.style.opacity = '0';
-
-                // Remove from DOM after animation completes
-                setTimeout(() => {
-                    alert.remove();
-                }, 500);
-            }, 5000);
-
-            // Manual close button
-            alert.querySelector('.close').addEventListener('click', function() {
-                alert.style.transition = 'opacity 0.3s ease';
-                alert.style.opacity = '0';
-                setTimeout(() => {
-                    alert.remove();
-                }, 300);
-            });
-        });
-    });
-</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 @endsection

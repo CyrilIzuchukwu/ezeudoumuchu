@@ -232,6 +232,10 @@
                                     @csrf
                                     <textarea class="form-control" id="summernote" placeholder="Your message"
                                         name="tribute" required></textarea>
+                                    <div class="char-counter"> <!-- Changed from word-counter -->
+                                        <span class="char-count">0</span>/2000 characters <!-- Changed from word-count -->
+                                        <span class="char-count-error text-danger" style="display: none;">Not more than 2000 characters!</span> <!-- Changed from word-count-error -->
+                                    </div>
                                     <div class="row mt-2">
                                         <div class="col-md-4">
                                             <input name="fullName" type="text" placeholder="Your name"
@@ -686,5 +690,88 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-lite.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get elements
+        const charCountDisplay = document.querySelector('.char-count'); // Changed from word-count
+        const charErrorDisplay = document.querySelector('.char-count-error'); // Changed from word-count-error
+        const summernoteElement = document.getElementById('summernote');
+        const MAX_CHARS = 2000; // Character limit
+
+        // Create observer to detect Summernote changes
+        const observer = new MutationObserver(function(mutations) {
+            updateCharCount();
+        });
+
+        // Start observing Summernote's content
+        if (summernoteElement) {
+            observer.observe(summernoteElement, {
+                childList: true,
+                subtree: true,
+                characterData: true
+            });
+        }
+
+        // Also check on keyup for immediate feedback
+        document.addEventListener('keyup', function(e) {
+            if (e.target.closest('.note-editable')) {
+                updateCharCount();
+            }
+        });
+
+        function updateCharCount() {
+            // Get Summernote content
+            const summernote = summernoteElement.nextElementSibling.querySelector('.note-editable');
+            const text = summernote.innerHTML;
+            const charCount = countChars(text); // Changed to count characters
+            const remaining = MAX_CHARS - charCount;
+
+            // Update display
+            charCountDisplay.textContent = charCount;
+
+            // Show warnings
+            if (charCount >= MAX_CHARS) {
+                charErrorDisplay.style.display = 'inline';
+                charErrorDisplay.textContent = 'Maximum 2000 characters reached!';
+            } else if (charCount >= MAX_CHARS - 100) { // Warn when 100 chars left
+                charCountDisplay.style.color = 'orange';
+                charErrorDisplay.style.display = 'inline';
+                charErrorDisplay.textContent = `${remaining} characters remaining - approaching limit!`;
+            } else {
+                charCountDisplay.style.color = '';
+                charErrorDisplay.style.display = 'none';
+            }
+        }
+
+        function countChars(text) {
+            // Strip HTML tags and count characters (including spaces)
+            const stripped = text.replace(/<[^>]*>/g, '');
+            return stripped.length;
+        }
+
+        // Initial count
+        updateCharCount();
+    });
+</script>
+
+<style>
+    .char-counter {
+        margin-top: 5px;
+        font-size: 0.9em;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .char-count-error {
+        margin-left: 10px;
+        font-weight: bold;
+    }
+
+    .panel {
+        margin-bottom: 0px !important;
+    }
+</style>
 
 @endsection

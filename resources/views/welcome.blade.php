@@ -568,7 +568,7 @@
         // Remove HTML tags for empty content check
         const plainText = $('<div>').html(message).text().trim();
 
-        if (!name || !email || !plainText) {
+        if (!name || !plainText) {
             showToast('error', 'Please fill in all fields.');
             return;
         }

@@ -22,7 +22,7 @@
                 <!-- start site logo -->
                 <div class="">
                     <a href="/" title="Obsequy" class="default-logo">
-                        <img src="assets/images/logo.png" alt="Logo" width="70">
+                        <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" width="70">
                     </a>
                     <!-- <a href="/" title="Obsequy" class="default-retina-logo">
                     <img src="assets/images/logo%402x.png" alt="Obsequy" width="204" height="46">

@@ -9,6 +9,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo.png') }}" type="image/x-icon">
 
     <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/bootstrap-theme.css') }}" rel="stylesheet" type="text/css">
@@ -21,6 +22,7 @@
     <link class="alt" href="{{ asset('assets/colors/color1.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/style-switcher/css/style-switcher.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/responsiveness.css') }}" rel="stylesheet" type="text/css">
 
 
     <link href="{{ asset('assets/css/font-awesome.css') }}" rel="stylesheet" type="text/css">

@@ -29,7 +29,7 @@
                 <div class="col-md-5 sticky-col ">
                     <div class="heraldic-design">
                         <div class="portrait-frame">
-                            <img src="assets/images/img4.jpg" alt="Portrait of Ezeudo Umuchu">
+                            <img src="{{ asset('assets/images/profile1.jpeg') }}" alt="Portrait of Ezeudo Umuchu">
                             <div class="crest-ornament">
                                 Ezeudo Umuchu
                             </div>
@@ -37,7 +37,7 @@
 
                         <div class="heraldic-title">
                             <div class="scroll-decoration">
-                                <h1>Chief Sir Sylvester <span>Chukwudozie</span> Ezeokenwa</h1>
+                                <h1>Chief Sir. Sylvester <span>Chukwudozie</span> Ezeokenwa</h1>
                             </div>
                             <!-- <div class="title-plaque">
                                 <span>Ezeudo Umuchu (KSJI)</span>
@@ -65,7 +65,7 @@
 
                         <li><a href="#condolences" aria-controls="Condolences" role="tab" data-toggle="tab">Condolences</a></li>
                         <li><a href="#photographs" aria-controls="Photographs" role="tab" data-toggle="tab">Photographs</a></li>
-                        
+
                     </ul>
                     <div class="tab-content obituary-info-tabs-content">
                         <div role="tabpanel" class="tab-pane active" id="Obituary">
@@ -183,18 +183,79 @@
                         </div>
                         <div role="tabpanel" class="tab-pane" id="photographs">
                             <ul class="row format-gallery obituary-photographs">
+
                                 <li class="grid-item format-image col-md-4 col-sm-6 col-xs-6">
-                                    <a href="http://wp1.imithemes.com/obsequy/wp-content/uploads/2016/10/image7.jpg" class="media-box popup-image"><img src="assets/images/image7-400x400.jpg" alt=""><span class="zoom"><span class="icon"><i class="fa fa-search"></i></span></span></a>
+                                    <a href="{{ asset('assets/images/img2.jpg') }}" class="media-box popup-image">
+                                        <img src="{{ asset('assets/images/img2.jpg') }}" class="gallery-img" alt="">
+                                        <span class="zoom">
+                                            <span class="icon">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                        </span>
+                                    </a>
                                 </li>
+
                                 <li class="grid-item format-image col-md-4 col-sm-6 col-xs-6">
-                                    <a href="http://wp1.imithemes.com/obsequy/wp-content/uploads/2016/10/image8.jpg" class="media-box popup-image"><img src="assets/images/image8-400x400.jpg" alt=""><span class="zoom"><span class="icon"><i class="fa fa-search"></i></span></span></a>
+                                    <a href="{{ asset('assets/images/img1.jpeg') }}" class="media-box popup-image">
+                                        <img src="{{ asset('assets/images/img1.jpeg') }}" alt="">
+                                        <span class="zoom">
+                                            <span class="icon">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                        </span>
+                                    </a>
                                 </li>
+
+
                                 <li class="grid-item format-image col-md-4 col-sm-6 col-xs-6">
-                                    <a href="http://wp1.imithemes.com/obsequy/wp-content/uploads/2016/10/image9.jpg" class="media-box popup-image"><img src="assets/images/image9-400x400.jpg" alt=""><span class="zoom"><span class="icon"><i class="fa fa-search"></i></span></span></a>
+                                    <a href="{{ asset('assets/images/profile1.jpeg') }}" class="media-box popup-image">
+                                        <img src="{{ asset('assets/images/profile1.jpeg') }}" alt="">
+                                        <span class="zoom">
+                                            <span class="icon">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                        </span>
+                                    </a>
                                 </li>
+
+
                                 <li class="grid-item format-image col-md-4 col-sm-6 col-xs-6">
-                                    <a href="http://wp1.imithemes.com/obsequy/wp-content/uploads/2016/10/img4.jpg" class="media-box popup-image"><img src="assets/images/img4-400x400.jpg" alt=""><span class="zoom"><span class="icon"><i class="fa fa-search"></i></span></span></a>
+                                    <a href="{{ asset('assets/images/img4.jpg') }}" class="media-box popup-image">
+                                        <img src="{{ asset('assets/images/img4.jpg') }}" alt="">
+                                        <span class="zoom">
+                                            <span class="icon">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                        </span>
+                                    </a>
                                 </li>
+
+
+                                <li class="grid-item format-image col-md-4 col-sm-6 col-xs-6">
+                                    <a href="{{ asset('assets/images/img3.jpg') }}" class="media-box popup-image">
+                                        <img src="{{ asset('assets/images/img3.jpg') }}" alt="">
+                                        <span class="zoom">
+                                            <span class="icon">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+
+
+                                <li class="grid-item format-image col-md-4 col-sm-6 col-xs-6">
+                                    <a href="{{ asset('assets/images/img6.jpeg') }}" class="media-box popup-image">
+                                        <img src="{{ asset('assets/images/img6.jpeg') }}" alt="">
+                                        <span class="zoom">
+                                            <span class="icon">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+
+
+
                             </ul>
                         </div>
                     </div>

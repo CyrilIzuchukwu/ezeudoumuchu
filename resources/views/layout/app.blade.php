@@ -30,6 +30,8 @@
     <link href="{{ asset('assets/css/animation.css') }}" rel="stylesheet" type="text/css">
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Playfair+Display:wght@500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Summernote CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
     <script src="{{ asset('assets/js/modernizr.js') }}"></script>
 
@@ -61,6 +63,8 @@
     <script src="{{ asset('assets/js/jquery.mb.YTPlayer.js') }}"></script>
     <script src="{{ asset('assets/style-switcher/js/jquery_cookie.js') }}"></script>
     <script src="{{ asset('assets/style-switcher/js/script.js') }}"></script>
+    <!-- Summernote JS -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 
 </body>

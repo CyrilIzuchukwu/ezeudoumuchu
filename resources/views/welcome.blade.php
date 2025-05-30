@@ -8,7 +8,7 @@
         <!-- start container -->
         <div class="container bannner-content">
             <h1>CHIEF (HON) SIR SYLVESTER ANYARUE CHUKWUMA EZEOKENWA, KSJI (EZEUDO UMUCHU; ICHIE EZENWATA) </h1>
-            <p class="date"> July 17, 1940 - May 15, 2025 </p>
+            <p class="date"> Date of Death: May 15, 2025 </p>
         </div>
         <!-- end container -->
     </div>
@@ -42,7 +42,7 @@
                             </div> -->
                             <div class="lifespan" style="text-align: center;">
                                 <span class="icon">⌛</span>
-                                <span>12 June 1955 - 15 May 2025</span>
+                                <span> Date of Death: 15 May 2025</span>
                             </div>
                         </div>
 

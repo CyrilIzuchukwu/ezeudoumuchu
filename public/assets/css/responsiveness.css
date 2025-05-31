@@ -180,3 +180,72 @@
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+/* Mobile Responsiveness (max-width: 767px) */
+@media only screen and (max-width: 767px) {
+    .welcome-message-wrapper {
+        padding: 30px 0;
+        /* Reduced padding for mobile */
+    }
+
+    .welcome-message-box {
+        padding: 25px 20px;
+        /* Smaller padding on mobile */
+    }
+
+    .section-title {
+        font-size: 24px;
+        /* Slightly smaller heading */
+    }
+
+    .divider .line {
+        max-width: 60px;
+        /* Shorter divider lines */
+    }
+
+    .welcome-content p.lead {
+        font-size: 16px;
+        /* Adjusted lead text size */
+    }
+
+    .welcome-content p {
+        font-size: 15px;
+        /* Slightly smaller body text */
+        line-height: 1.7;
+        /* Tighter line spacing */
+    }
+
+    .memorial-quote {
+        margin: 20px 0;
+        /* Reduced margin for quotes */
+        padding-left: 15px;
+        /* Smaller padding */
+    }
+
+    .closing-message {
+        margin-top: 20px;
+        /* Adjusted spacing */
+    }
+
+    .signature {
+        font-size: 15px;
+        /* Smaller signature */
+    }
+
+    /* Ensure full width on small screens */
+    .col-md-10.col-md-offset-1 {
+        width: 100%;
+        margin: 0;
+        padding: 0 15px;
+    }
+}

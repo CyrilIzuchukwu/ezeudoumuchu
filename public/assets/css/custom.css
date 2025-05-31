@@ -62,7 +62,7 @@
     position: relative;
     background: url('/assets/images/banner.jpg') no-repeat;
     background-size: cover;
-    padding: 90px 0;
+    padding: 50px 0;
     background-position: center;
 }
 
@@ -473,4 +473,84 @@ blockquote footer {
 .contact-form-wrapper {
     position: relative;
     z-index: 99;
+}
+
+
+
+
+/* WELCOME MESSAGE DESIGN WELCOME MESSAGE DESIGN  */
+.welcome-message-wrapper {
+    padding: 40px 0;
+    /* background-color: #f9f9f9; */
+    font-family: 'Georgia', serif;
+
+}
+
+.welcome-message-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.section-header {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 28px;
+    color: #333;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.divider .line {
+    height: 1px;
+    background: #ddd;
+    flex: 1;
+    max-width: 100px;
+}
+
+.divider .icon {
+    margin: 0 15px;
+    color: #8e3a3a;
+    /* Elegant dark red */
+}
+
+.welcome-content {
+    line-height: 1.8;
+    color: #555;
+}
+
+.welcome-content p.lead {
+    font-size: 18px;
+    font-weight: 500;
+    color: #444;
+}
+
+.memorial-quote {
+    border-left: 4px solid #8e3a3a;
+    padding-left: 20px;
+    margin: 25px 0;
+    font-style: italic;
+    color: #666;
+}
+
+.closing-message {
+    margin-top: 30px;
+    font-size: 16px;
+}
+
+.signature {
+    margin-top: 20px;
+    font-weight: 600;
+    color: #222;
 }

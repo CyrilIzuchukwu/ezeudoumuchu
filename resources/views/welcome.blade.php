@@ -22,6 +22,44 @@
 <!-- Toast Notification Container -->
 <div id="toastContainer" style="position: fixed; top: 50px; right: 50px; z-index: 9999; width: auto;"></div>
 
+<div class="welcome-message-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="welcome-message-box">
+                    <div class="section-header text-center">
+                        <h2 class="section-title">A Heartfelt Welcome</h2>
+                        <div class="divider">
+                            <span class="line"></span>
+                            <span class="icon"><i class="fa fa-heart"></i></span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+
+                    <div class="welcome-content">
+                        <p class="lead">I welcome you to this platform dedicated to the life and legacy of my dear father, <strong>Chief Sir Sylvester Ezeokenwa, Ezeudo Umuchu</strong>.</p>
+
+                        <p>It is with a heavy heart that I share this space with you, as we celebrate his life, mourn his passing, and seek to keep his memory alive.</p>
+
+                        <blockquote class="memorial-quote">
+                            <p>"My father was a man of great vision, integrity, and compassion. He dedicated his life to serving others, and his legacy continues to inspire us all."</p>
+                        </blockquote>
+
+                        <p>Through this platform, we hope to share his story, his achievements, and his profound impact on our community and beyond. I invite you to join us in celebrating his life, sharing your memories, and paying your respects.</p>
+
+                        <p>May his legacy continue to inspire us all, and may we strive to carry on his work in our own ways.</p>
+
+                        <div class="closing-message">
+                            <p>Thank you for visiting, and may God comfort us all during this difficult time.</p>
+                            <p class="signature">— <strong>Chief Barr. Sly Ezeokenwa</strong> <br> (Son) <br> National Chairman, APGA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="main" role="main">
     <div id="content" class="content main-content">
         <!-- start container -->

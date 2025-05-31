@@ -442,3 +442,35 @@ blockquote footer {
     margin-right: 10px;
     float: left;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Contact us styling   */
+.contact-row .contact-header {
+    margin-top: 30px;
+}
+
+.contact-us .icon-box h3 {
+    margin-bottom: 2px;
+}
+
+
+.contactform .form-control {
+    margin-bottom: 15px !important;
+}
+
+
+.contact-form-wrapper {
+    position: relative;
+    z-index: 99;
+}

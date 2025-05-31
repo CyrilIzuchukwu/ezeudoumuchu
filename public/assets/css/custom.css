@@ -99,7 +99,7 @@
     background: rgba(0, 0, 0, 1) !important;
 }
 
-.banner-area .date {
+.banner-area .bannner-content .date {
     color: #ffffff;
     text-align: center;
     margin-bottom: 0;
@@ -108,16 +108,16 @@
     align-items: center;
     gap: 8px;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 10px !important;
 }
 
-.banner-area .date span i {
+.banner-area .bannner-content .date span i {
     color: #fff !important;
     font-size: 10px !important;
 
 }
 
-.banner-area .date span {
+.banner-area .bannner-content .date span {
     display: flex !important;
     align-items: center !important;
     gap: 5px !important;

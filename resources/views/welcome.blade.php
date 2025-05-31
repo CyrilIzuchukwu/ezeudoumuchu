@@ -8,7 +8,11 @@
         <!-- start container -->
         <div class="container bannner-content">
             <h1>CHIEF (HON) SIR SYLVESTER ANYARUE CHUKWUMA EZEOKENWA, KSJI (EZEUDO UMUCHU; ICHIE EZENWATA) </h1>
-            <p class="date"> Date of Death: May 15, 2025 </p>
+            <p class="date">
+                <span> <i class="fa fa-star" aria-hidden="true"></i>June 26, 1954</span>
+                <span>-</span>
+                <span><i class="fa fa-cross" aria-hidden="true"></i> May 15, 2025</span>
+            </p>
         </div>
         <!-- end container -->
     </div>
@@ -42,7 +46,7 @@
                             </div> -->
                             <div class="lifespan" style="text-align: center;">
                                 <span class="icon">⌛</span>
-                                <span> Date of Death: 15 May 2025</span>
+                                <span> June 26, 1954 - May 15, 2025</span>
                             </div>
                         </div>
 
@@ -237,11 +241,11 @@
                                         <span class="char-count-error text-danger" style="display: none;">Not more than 2000 characters!</span> <!-- Changed from word-count-error -->
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <input name="fullName" type="text" placeholder="Your name"
                                                 class="form-control input-lg" required>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <input name="email" type="email" placeholder="Your email (Optional)"
                                                 class="form-control input-lg">
                                         </div>
@@ -333,20 +337,6 @@
             <!-- end row -->
             <div class="np-links">
                 <div class="row">
-                    <!-- <div class="col-md-6 col-sm-6 col-xs-6 text-align-left">
-                                            <div class="pn-link prev-post-link">
-                                                <a href="#" class="pull-left">
-                                                    <span>Previous</span>
-                                                </a>
-                                            </div>
-                                        </div> -->
-                    <!-- <div class="col-md-6 col-sm-6 col-xs-6 text-align-right">
-                                            <div class="pn-link next-post-link">
-                                                <a href="#" class="pull-right">
-                                                    <span>Next</span>
-                                                    Janet Jordan</a>
-                                            </div>
-                                        </div> -->
                 </div>
             </div>
 

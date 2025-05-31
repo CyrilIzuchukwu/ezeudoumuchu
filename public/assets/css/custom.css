@@ -104,6 +104,22 @@
     text-align: center;
     margin-bottom: 0;
     color: #d7c365;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.banner-area .date i {
+    color: #fff;
+    font-size: 10px;
+}
+
+.banner-area .date span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 

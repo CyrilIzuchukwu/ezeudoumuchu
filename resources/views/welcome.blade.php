@@ -8,7 +8,7 @@
         <!-- start container -->
         <div class="container bannner-content">
             <h1>CHIEF (HON) SIR SYLVESTER ANYARUE CHUKWUMA EZEOKENWA, KSJI (EZEUDO UMUCHU; ICHIE EZENWATA) </h1>
-            <p class="date" style="margin-top: 10px !important;">
+            <p class="date" style="margin-top: 10px !important; display: flex; align-items: center; justify-content: center; gap: 10px;">
                 <span style="display: flex; align-items: center; gap: 5px;"> <i class="fa fa-star" style="color: #fff; font-size: 10px !important;"></i>June 26, 1954</span>
                 <span>-</span>
                 <span style="display: flex; align-items: center; gap: 5px;"><i class="fa fa-cross" style="color: #fff; font-size: 10px !important;"></i> May 15, 2025</span>

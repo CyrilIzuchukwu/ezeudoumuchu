@@ -111,15 +111,16 @@
     margin-top: 10px;
 }
 
-.banner-area .date i {
-    color: #fff;
-    font-size: 10px;
+.banner-area .date span i {
+    color: #fff !important;
+    font-size: 10px !important;
+
 }
 
 .banner-area .date span {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
 }
 
 

@@ -57,15 +57,16 @@
                 <div class="col-md-5">
                     <div class="contact-form-wrapper pull-top">
                         <p class="margin-35">Feel free to contact us if you have any further questions.</p>
-                        <form method="post" id="contactform" name="contactform" class="contact-form clearfix" action="">
+                        <form method="post" id="contact-form" name="contactform" class="contact-form clearfix" action="">
 
                             <label for="name">Your Name (required)</label>
-                            <input name="name" type="text" id="name" class="form-control" placeholder="">
+                            <input name="name" type="text" id="name" name="user_name" class="form-control" placeholder="your name">
                             <label for="email">Your Email (required)</label>
-                            <input name="email" type="text" id="email" class="form-control" placeholder="">
+                            <input name="email" type="text" id="email" name="user_email" class="form-control" placeholder="name@example.com">
 
                             <label for="message">Your Message</label>
-                            <textarea name="message" cols="2" rows="2" id="comments" class="form-control" placeholder=""></textarea>
+                            <textarea cols="2" rows="2" id="message" name="user_message" placeholder="Leave your message here"  class="form-control"></textarea>
+                            
                             <input name="submit" type="submit" class="button btn-primary" value="Send Message">
                         </form>
                         <div class="clearfix"></div>
@@ -95,7 +96,39 @@
     </div>
 </div>
 
-
-
+	<script
+	type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+  ></script>
+  <script type="text/javascript">
+	// Initialize EmailJS
+	(function () {
+	  emailjs.init("public key"); 
+	})();
+  
+	// Handle form submission
+	document.getElementById("contact-form").addEventListener("submit", function (event) {
+	  event.preventDefault(); // Prevent the default form submission behavior
+  
+	  // Show a loading indicator if needed
+	  const formMessage = document.querySelector(".form-message");
+	  formMessage.textContent = "Sending...";
+  
+	  // Use EmailJS to send the form data
+	  emailjs
+		.sendForm("service code", "template code", this)
+		.then(() => {
+		  formMessage.textContent = "Message sent successfully!";
+		  formMessage.style.color = "green";
+		  this.reset(); 
+		})
+		.catch((error) => {
+		  console.error("Error:", error);
+		  formMessage.textContent = "Failed to send the message. Please try again.";
+		  formMessage.style.color = "red";
+		});
+	});
+  </script>
+<script src="assets/js/vendor/jquery.min.js"></script>
 
 @endsection

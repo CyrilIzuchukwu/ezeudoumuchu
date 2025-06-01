@@ -580,17 +580,19 @@
                                     <div class="col-md-12">
                                         <div class="contact-form-wrapper">
                                             <p class="margin-35">Feel free to contact us if you have any further questions.</p>
-                                            <form method="post" id="contact-form" class="contact-form clearfix" action="">
+                                            <form method="POST" id="contact-form" class="contact-form clearfix" action="{{ route('contact.send') }}">
+                                                @csrf
 
                                                 <label for="name">Your Name (required)</label>
-                                                <input name="name" type="text" id="name" class="form-control" placeholder="your name">
+                                                <input name="contactName" type="text" id="name" class="form-control" placeholder="your name">
                                                 <label for="email">Your Email (required)</label>
-                                                <input name="email" type="text" id="email" class="form-control" placeholder="name@example.com">
+                                                <input name="contactEmail" type="text" id="email" class="form-control" placeholder="name@example.com">
 
                                                 <label for="message">Your Message</label>
-                                                <textarea cols="2" rows="2" id="message" name="user_message" placeholder="Leave your message here" class="form-control"></textarea>
+                                                <textarea cols="2" rows="2" id="contactUsMessage" name="contactMessage" placeholder="Leave your message here" class="form-control"></textarea>
 
-                                                <input type="submit" class="button btn-primary" value="Send Message">
+                                                 <button type="button" class="btn btn-primary btn-lg mt-3" onclick="showContactModal()">Send
+                                        Message</button>
                                             </form>
                                             <div class="clearfix"></div>
                                         </div>
@@ -928,6 +930,41 @@
         // Submit form after a brief delay (for visual feedback)
         setTimeout(() => {
             document.getElementById('condolenceForm').submit();
+        }, 500);
+    }
+
+
+
+      function showContactModal() {
+        const name = document.querySelector('input[name="contactName"]').value;
+        const email = document.querySelector('input[name="contactEmail"]').value;
+        const message = document.getElementById('contactUsMessage').value;
+
+        if (!name || !email || !message) {
+            showToast('error', 'Please fill in all fields.');
+            return;
+        }
+
+        document.getElementById('modalName').textContent = name;
+        document.getElementById('modalEmail').textContent = email;
+        document.getElementById('modalMessage').innerHTML = message;
+
+        $('#confirmModal').modal('show');
+    }
+
+    function submitForm() {
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const submitSpinner = document.getElementById('submitSpinner');
+
+        // Disable button & show spinner
+        submitBtn.disabled = true;
+        submitText.style.display = 'none'; // Hide text
+        submitSpinner.style.display = 'inline-flex'; // Show spinner
+
+        // Submit form after a brief delay (for visual feedback)
+        setTimeout(() => {
+            document.getElementById('contact-form').submit();
         }, 500);
     }
 </script>

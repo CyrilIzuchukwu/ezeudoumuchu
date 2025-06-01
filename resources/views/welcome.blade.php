@@ -251,8 +251,169 @@
                             <div class="eulogy-container">
                                 <div class="memorial-header">
                                     <div class="gold-bar"></div>
-                                    <h1 class="text-center">Funeral Program</span></h1>
+                                    <h1 class="text-center">Funeral Service Schedule</span></h1>
                                     <div class="gold-bar"></div>
+                                </div>
+
+                                <div class="funeral-content">
+                                    <div class="program-section">
+
+                                        <div class="schedule-day">
+                                            <h3> 🗓️ Saturday 12th July 2025</h3>
+                                            <ul>
+                                                <li>
+                                                    <p class="time">
+                                                        5:00pm
+                                                    </p>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span class="info">
+                                                        Christian Wake Keep and Service of Songs at his Residence, Housing Estate, Fegge Onitsha
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="schedule-day">
+                                            <h3> 🗓️ Thursday 17th July 2025</h3>
+                                            <ul>
+                                                <li>
+                                                    <p class="time">
+                                                        1:00pm
+                                                    </p>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span class="info">
+                                                        Valedictory Session at Onitsha South LGA Secretariat, Woliwo Onitsha
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <p class="time">
+                                                        3:00pm
+                                                    </p>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span class="info">
+                                                        Body arrives Temple of the Knights of St. John International, St. Jude Commandery for Cancellation Exercise
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <p class="time">
+                                                        4:00pm
+                                                    </p>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span class="info">
+                                                        Brief Stop Over at APGA Onitsha South LGA Secretariat, along Miss Elems Street, Fegge Onitsha
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="schedule-day">
+                                            <h3> 🗓️ Friday 18th July 2025</h3>
+                                            <ul>
+                                                <li>
+                                                    <p class="time">
+                                                        10am
+                                                    </p>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span class="info">
+                                                        Requiem Mass at Immaculate Heart Catholic Parish, along Ziks Avenue, Fegge Onitsha.
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <p class="time">
+                                                        12:00noon
+                                                    </p>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span class="info">
+                                                        Body departs Immaculate Heart Parish, Fegge Onitsha to Umuchu
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <p class="time">
+                                                        2:00pm
+                                                    </p>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span class="info">
+                                                        Body arrives Umuchu Civic Centre, Umuchu for a Valedictory Session by the Umuchu Improvement Union Representative Assembly (UIURA)
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <p class="time">
+                                                        4:00pm
+                                                    </p>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span class="info">
+                                                        Vigil Mass at SS. Peter & Paul Catholic Parish, Amanasaa Umuchu in Aguata LGA
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="schedule-day">
+                                            <h3> 🗓️ Saturday 19th July 2025</h3>
+                                            <ul>
+                                                <li>
+                                                    <p class="time">
+                                                        8:00am
+                                                    </p>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span class="info">
+                                                        Body arrives Ezeudo Umuchu's compound for lying-in-state
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <p class="time">
+                                                        10:00am
+                                                    </p>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span class="info">
+                                                        Funeral Mass at Holy Name Parish, Umuchu in Aguata LGA
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <p class="time">
+                                                        After Mass
+                                                    </p>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span class="info">
+                                                        Interment follows immediately at his compound
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <p class="time">
+                                                        After Interment
+                                                    </p>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span class="info">
+                                                        Reception and Condolences at Umuchu Main Market Complex, Umuchu in Aguata LGA
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="schedule-day">
+                                            <h3> 🗓️ Sunday 20th July 2025</h3>
+                                            <ul>
+                                                <li>
+                                                    <p class="time">
+                                                        9:00am
+                                                    </p>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span class="info">
+                                                        Thanksgiving Mass at SS. Peter & Paul Parish, Amanasaa Umuchu
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="prayer-close">
+                                            <p class="text-center"><em>May his gentle soul rest in peace - Amen</em></p>
+                                            <p class="text-right program-sign"><span>Signed:</span><br>
+                                                Barr. Sly Ezeokenwa<br>
+                                                National Chairman APGA (SON)<br>
+                                                For the Family
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -395,7 +556,7 @@
                                                             <i class="fa fa-user"></i>
                                                         </div>
                                                         <h3>Name</h3>
-                                                        <address>Dr. Chibueze Ofobuike  (Mayor, Aguata LGA) </address>
+                                                        <address>Dr. Chibueze Ofobuike (Mayor, Aguata LGA) </address>
                                                         <p> <i class="fa fa-phone" style="color: #8B0000; background: #fff !important;"></i> <span>08063306798</span></p>
                                                         <span>Burial Planning Commitee Chairman</span>
 

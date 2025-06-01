@@ -106,6 +106,11 @@
                             class="{{ request()->has('tab') && request()->get('tab') == 'condolences' ? '' : 'active' }}">
                             <a href="#Obituary" aria-controls="Obituary" role="tab" data-toggle="tab">Biography</a>
                         </li>
+                        <li class="">
+                            <a href="#funeralProgram" aria-controls="funeralProgram" role="tab"
+                                data-toggle="tab">Funeral Program
+                            </a>
+                        </li>
                         <li
                             class="{{ request()->has('tab') && request()->get('tab') == 'condolences' ? 'active' : '' }}">
                             <a href="#condolences" aria-controls="Condolences" role="tab"
@@ -114,6 +119,11 @@
                         <li class="">
                             <a href="#eulogy" aria-controls="eulogy" role="tab"
                                 data-toggle="tab">Eulogy
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#contact" aria-controls="contact" role="tab"
+                                data-toggle="tab">Contact
                             </a>
                         </li>
                         <li>
@@ -236,6 +246,18 @@
                             </div>
                         </div>
 
+
+                        <div role="tabpanel" class="tab-pane " id="funeralProgram">
+                            <div class="eulogy-container">
+                                <div class="memorial-header">
+                                    <div class="gold-bar"></div>
+                                    <h1 class="text-center">Funeral Program</span></h1>
+                                    <div class="gold-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div role="tabpanel" class="tab-pane {{ request()->has('tab') && request()->get('tab') == 'condolences' ? 'active' : '' }}" id="condolences">
                             @if(session('success') || session('error'))
                             <script>
@@ -300,6 +322,8 @@
                         </div>
 
 
+
+
                         <div role="tabpanel" class="tab-pane " id="eulogy">
                             <div class="eulogy-container">
                                 <div class="memorial-header">
@@ -341,6 +365,73 @@
                                         <div class="signature-block">
                                             <p class="final-line">Jee nke oma Ezeudo Umuchu.</p>
                                             <div class="signature-line"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane " id="contact">
+                            <div class="eulogy-container">
+                                <div class="memorial-header">
+                                    <div class="gold-bar"></div>
+                                    <h1 class="text-center">Contact Us</span></h1>
+                                    <div class="gold-bar"></div>
+                                </div>
+
+
+
+                                <div class=" contact-row row justify-content-center align-items-center">
+                                    <div class="col-md-12">
+                                        <p>For all inquiries related to the burial proceedings, kindly contact the committee chairman whose details are provided below</p>
+                                        <div class="spacer-45"></div>
+                                        <!-- start contact us -->
+                                        <div class="contact-us">
+                                            <!-- start row -->
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-6">
+                                                    <div class="icon-box ibox-secondary ibox-outline ">
+                                                        <div class="ibox-icon">
+                                                            <i class="fa fa-user"></i>
+                                                        </div>
+                                                        <h3>Name</h3>
+                                                        <address>Dr. Chibueze Ofobuike  (Mayor, Aguata LGA) </address>
+                                                        <p> <i class="fa fa-phone" style="color: #8B0000; background: #fff !important;"></i> <span>08063306798</span></p>
+                                                        <span>Burial Planning Commitee Chairman</span>
+
+                                                    </div>
+                                                </div>
+
+                                                <!-- <div class="col-md-4 col-sm-6">
+                                                    <div class="icon-box ibox-secondary ibox-outline">
+                                                        <div class="ibox-icon">
+                                                            <i class="fa fa-phone"></i>
+                                                        </div>
+                                                        <h3>PHONE</h3>
+                                                        <span>08063306798</span>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                            <!-- end row -->
+                                        </div>
+                                        <!-- end contact us -->
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="contact-form-wrapper">
+                                            <p class="margin-35">Feel free to contact us if you have any further questions.</p>
+                                            <form method="post" id="contact-form" class="contact-form clearfix" action="">
+
+                                                <label for="name">Your Name (required)</label>
+                                                <input name="name" type="text" id="name" class="form-control" placeholder="your name">
+                                                <label for="email">Your Email (required)</label>
+                                                <input name="email" type="text" id="email" class="form-control" placeholder="name@example.com">
+
+                                                <label for="message">Your Message</label>
+                                                <textarea cols="2" rows="2" id="message" name="user_message" placeholder="Leave your message here" class="form-control"></textarea>
+
+                                                <input type="submit" class="button btn-primary" value="Send Message">
+                                            </form>
+                                            <div class="clearfix"></div>
                                         </div>
                                     </div>
                                 </div>

@@ -659,3 +659,33 @@ blockquote footer {
     background: #b8860b;
     margin: 10px auto;
 }
+
+
+
+
+.obituary-info-tabs {
+    display: flex !important;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.icon-box h3 {
+    font-size: 18px;
+    font-family: var(--cabinet-font);
+    margin-bottom: 12;
+    font-weight: 600;
+}
+
+.icon-box .ibox-icon {
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    top: 0;
+    left: 0;
+}

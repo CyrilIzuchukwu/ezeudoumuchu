@@ -9,3 +9,6 @@ Route::post('/tribute-store', [TributeController::class, 'tributeStore'])->name(
 
 
 Route::get('contact-us', [PageController::class, 'contact'])->name('contact.us');
+
+
+Route::get('funeral-program', [PageController::class, 'funeralProgram'])->name('funeral.program');

@@ -179,73 +179,34 @@
     }
 
 
-}
 
-
-
-
-
-
-
-
-
-
-
-/* Mobile Responsiveness (max-width: 767px) */
-@media only screen and (max-width: 767px) {
-    .welcome-message-wrapper {
-        padding: 30px 0;
-        /* Reduced padding for mobile */
+    .contact-form-wrapper {
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 30px 20px 40px 20px;
     }
+
 
     .welcome-message-box {
-        padding: 25px 20px;
-        /* Smaller padding on mobile */
-    }
-
-    .section-title {
-        font-size: 24px;
-        /* Slightly smaller heading */
-    }
-
-    .divider .line {
-        max-width: 60px;
-        /* Shorter divider lines */
+        background: #fff;
+        padding: 20px 20px;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     }
 
     .welcome-content p.lead {
-        font-size: 16px;
-        /* Adjusted lead text size */
+        font-size: 14px;
+        font-weight: 500;
+        color: #444;
     }
 
-    .welcome-content p {
-        font-size: 15px;
-        /* Slightly smaller body text */
-        line-height: 1.7;
-        /* Tighter line spacing */
+    .section-title {
+        font-size: 20px;
     }
 
-    .memorial-quote {
-        margin: 20px 0;
-        /* Reduced margin for quotes */
-        padding-left: 15px;
-        /* Smaller padding */
+    .memorial-header h1 {
+        font-size: 20px;
     }
 
-    .closing-message {
-        margin-top: 20px;
-        /* Adjusted spacing */
-    }
-
-    .signature {
-        font-size: 15px;
-        /* Smaller signature */
-    }
-
-    /* Ensure full width on small screens */
-    .col-md-10.col-md-offset-1 {
-        width: 100%;
-        margin: 0;
-        padding: 0 15px;
-    }
 }

@@ -12,4 +12,11 @@ class PageController extends Controller
     {
         return view('contact');
     }
+
+
+
+    public function funeralProgram()
+    {
+        return view('funeral-program');
+    }
 }

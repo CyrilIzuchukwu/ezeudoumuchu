@@ -46,7 +46,7 @@
                         </li> -->
 
                         <li><a href="/" title="Home"><span>Home</span></a></li>
-                        <li><a href=""><span>Funeral Program</span></a></li>
+                        <li><a href="{{ route('funeral.program') }}"><span>Funeral Program</span></a></li>
                         <li><a href="{{ route('contact.us') }}" title="Contact us"><span>Contact</span></a></li>
                     </ul>
                 </nav>

@@ -265,7 +265,7 @@
                                                     <p class="time">
                                                         5:00pm
                                                     </p>
-                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow">→</span>
                                                     <span class="info">
                                                         Christian Wake Keep and Service of Songs at his Residence, Housing Estate, Fegge Onitsha
                                                     </span>
@@ -280,7 +280,7 @@
                                                     <p class="time">
                                                         1:00pm
                                                     </p>
-                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow">→</span>
                                                     <span class="info">
                                                         Valedictory Session at Onitsha South LGA Secretariat, Woliwo Onitsha
                                                     </span>
@@ -289,7 +289,7 @@
                                                     <p class="time">
                                                         3:00pm
                                                     </p>
-                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow">→</span>
                                                     <span class="info">
                                                         Body arrives Temple of the Knights of St. John International, St. Jude Commandery for Cancellation Exercise
                                                     </span>
@@ -298,7 +298,7 @@
                                                     <p class="time">
                                                         4:00pm
                                                     </p>
-                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow">→</span>
                                                     <span class="info">
                                                         Brief Stop Over at APGA Onitsha South LGA Secretariat, along Miss Elems Street, Fegge Onitsha
                                                     </span>
@@ -313,7 +313,7 @@
                                                     <p class="time">
                                                         10am
                                                     </p>
-                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow">→</span>
                                                     <span class="info">
                                                         Requiem Mass at Immaculate Heart Catholic Parish, along Ziks Avenue, Fegge Onitsha.
                                                     </span>
@@ -322,7 +322,7 @@
                                                     <p class="time">
                                                         12:00noon
                                                     </p>
-                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow">→</span>
                                                     <span class="info">
                                                         Body departs Immaculate Heart Parish, Fegge Onitsha to Umuchu
                                                     </span>
@@ -331,7 +331,7 @@
                                                     <p class="time">
                                                         2:00pm
                                                     </p>
-                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow">→</span>
                                                     <span class="info">
                                                         Body arrives Umuchu Civic Centre, Umuchu for a Valedictory Session by the Umuchu Improvement Union Representative Assembly (UIURA)
                                                     </span>
@@ -340,7 +340,7 @@
                                                     <p class="time">
                                                         4:00pm
                                                     </p>
-                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow">→</span>
                                                     <span class="info">
                                                         Vigil Mass at SS. Peter & Paul Catholic Parish, Amanasaa Umuchu in Aguata LGA
                                                     </span>
@@ -355,7 +355,7 @@
                                                     <p class="time">
                                                         8:00am
                                                     </p>
-                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow">→</span>
                                                     <span class="info">
                                                         Body arrives Ezeudo Umuchu's compound for lying-in-state
                                                     </span>
@@ -364,7 +364,7 @@
                                                     <p class="time">
                                                         10:00am
                                                     </p>
-                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow">→</span>
                                                     <span class="info">
                                                         Funeral Mass at Holy Name Parish, Umuchu in Aguata LGA
                                                     </span>
@@ -373,7 +373,7 @@
                                                     <p class="time">
                                                         After Mass
                                                     </p>
-                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow">→</span>
                                                     <span class="info">
                                                         Interment follows immediately at his compound
                                                     </span>
@@ -382,7 +382,7 @@
                                                     <p class="time">
                                                         After Interment
                                                     </p>
-                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow">→</span>
                                                     <span class="info">
                                                         Reception and Condolences at Umuchu Main Market Complex, Umuchu in Aguata LGA
                                                     </span>
@@ -397,7 +397,7 @@
                                                     <p class="time">
                                                         9:00am
                                                     </p>
-                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow" >→</span>
+                                                    <span style="margin: 0 5px; color: #8e7037;" class="arrow">→</span>
                                                     <span class="info">
                                                         Thanksgiving Mass at SS. Peter & Paul Parish, Amanasaa Umuchu
                                                     </span>
@@ -591,8 +591,8 @@
                                                 <label for="message">Your Message</label>
                                                 <textarea cols="2" rows="2" id="contactUsMessage" name="contactMessage" placeholder="Leave your message here" class="form-control"></textarea>
 
-                                                 <button type="button" class="btn btn-primary btn-lg mt-3" onclick="showContactModal()">Send
-                                        Message</button>
+                                                <button type="button" class="btn btn-primary btn-lg mt-3" onclick="showContactModal()">Send
+                                                    Message</button>
                                             </form>
                                             <div class="clearfix"></div>
                                         </div>
@@ -702,7 +702,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" style="font-weight: bold; color: #000; font-size: 1rem;">
-                    Confirm Your Tribute 🕊️ Message
+                    Confirm Your 🕊️ Message
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -935,7 +935,7 @@
 
 
 
-      function showContactModal() {
+    function showContactModal() {
         const name = document.querySelector('input[name="contactName"]').value;
         const email = document.querySelector('input[name="contactEmail"]').value;
         const message = document.getElementById('contactUsMessage').value;
@@ -1058,6 +1058,114 @@
     .modal-footer {
         border-top: 1px solid #dee2e6;
         padding: 15px 20px;
+    }
+</style>
+
+
+
+<!-- funeral program  -->
+<style>
+    .memorial-header {
+        margin-bottom: 30px;
+    }
+
+
+
+    .program-section {
+        margin-bottom: 40px;
+    }
+
+    .schedule-day {
+        margin-bottom: 30px;
+        padding: 15px;
+        background-color: rgba(249, 249, 249, 0.7);
+        border-radius: 5px;
+    }
+
+    .schedule-day h3 {
+        color: #8B0000;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+        font-family: var(--cabinet-font);
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    .schedule-day ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-left: 0px !important;
+    }
+
+    .schedule-day li {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: start;
+        justify-content: start;
+
+        /* flex-direction: column; */
+        gap: 6px;
+    }
+
+    .schedule-day li .time {
+        /* display: flex; */
+        white-space: nowrap;
+        color: #333;
+        font-weight: 600;
+        font-family: var(--cabinet-font);
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .schedule-day li .info {
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .prayer-close {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
+    }
+
+    .prayer-close em {
+        font-size: 14px;
+        color: #555;
+        color: rgb(139, 0, 0);
+        font-style: italic;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .program-sign {
+        text-align: right;
+        font-style: italic;
+        font-family: Lora, serif;
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+
+    @media only screen and (max-width: 767px) {
+        .schedule-day li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+        }
+
+        .schedule-day li .arrow {
+            display: none !important;
+        }
     }
 </style>
 

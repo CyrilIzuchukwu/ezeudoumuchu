@@ -19,4 +19,9 @@ class PageController extends Controller
     {
         return view('funeral-program');
     }
+
+    public function qrCode()
+    {
+        return view('qrcode');
+    }
 }

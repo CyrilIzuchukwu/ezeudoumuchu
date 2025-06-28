@@ -35,6 +35,8 @@
 
     <script src="{{ asset('assets/js/modernizr.js') }}"></script>
 
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 
 </head>
 
@@ -52,6 +54,9 @@
         <!-- end footer -->
         <a id="back-to-top"><i class="fa fa-arrow-up"></i></a>
     </div>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
     <script src="{{ asset('assets/js/jquery-2.2.3.min.js') }}"></script> <!-- Jquery Library Call -->
     <script src="{{ asset('assets/vendor/magnific/jquery.magnific-popup.min.js') }}"></script> <!-- Maginific Popup Plugin -->
     <script src="{{ asset('assets/js/ui-plugins.js') }}"></script> <!-- UI Plugins -->

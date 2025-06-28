@@ -48,6 +48,16 @@
                         <li><a href="/" title="Home"><span>Home</span></a></li>
                         <!-- <li><a href="{{ route('funeral.program') }}"><span>Funeral Program</span></a></li> -->
                         <li><a href="{{ route('contact.us') }}" title="Contact us"><span>Contact</span></a></li>
+
+                        @auth
+                        @if (auth()->user()->role === 'admin')
+                        <li><a href="{{ route('admin.dashboard') }}" title="Contact us"><span>Dashboard</span></a></li>
+                        
+                        @elseif (auth()->user()->role === 'user')
+
+                        @endif
+                        @else
+                        @endauth
                     </ul>
                 </nav>
                 <!-- end main navigation -->

@@ -111,11 +111,13 @@
                                 data-toggle="tab">Funeral Program
                             </a>
                         </li>
-                        <li
-                            class="{{ request()->has('tab') && request()->get('tab') == 'condolences' ? 'active' : '' }}">
-                            <a href="#condolences" aria-controls="Condolences" role="tab"
-                                data-toggle="tab">Condolences</a>
+
+                        <li class="">
+                            <a href="#tributes" aria-controls="tributes" role="tab"
+                                data-toggle="tab">Tributes
+                            </a>
                         </li>
+
                         <li class="">
                             <a href="#eulogy" aria-controls="eulogy" role="tab"
                                 data-toggle="tab">Eulogy
@@ -126,10 +128,16 @@
                                 data-toggle="tab">Contact
                             </a>
                         </li>
+
                         <li>
                             <a href="#photographs" aria-controls="Photographs" role="tab"
                                 data-toggle="tab">Photographs
                             </a>
+                        </li>
+                        <li
+                            class="{{ request()->has('tab') && request()->get('tab') == 'condolences' ? 'active' : '' }}">
+                            <a href="#condolences" aria-controls="Condolences" role="tab"
+                                data-toggle="tab">Condolences</a>
                         </li>
 
                     </ul>
@@ -676,6 +684,55 @@
 
                             </ul>
                         </div>
+
+
+
+                        <!-- tributes  -->
+                        <div role="tabpanel" class="tab-pane " id="tributes">
+                            <div class="eulogy-container">
+                                <div class="memorial-header">
+                                    <div class="gold-bar"></div>
+                                    <h1 class="text-center">Tributes</span></h1>
+                                    <div class="gold-bar"></div>
+                                </div>
+
+                                <div class="tribute-content">
+                                    <!-- Swiper container with book effect -->
+                                    @if($tributes->isEmpty())
+                                    <div class="alert alert-info">No tributes have been uploaded yet.</div>
+                                    @else
+
+                                    <div class="swiper-container tribute-swiper">
+                                        <div class="swiper-wrapper">
+                                            <!-- Each tribute as a page -->
+                                            @if($tributes->where('is_cover', true)->first())
+                                            <div class="swiper-slide">
+                                                <div class="tribute-page">
+                                                    <img src="{{ asset('storage/' . $tributes->where('is_cover', true)->first()->image_path) }}"
+                                                        alt="Cover Tribute" class="tribute-image">
+                                                </div>
+                                            </div>
+                                            @endif
+
+                                            <!-- Other tribute pages -->
+                                            @foreach($tributes->where('is_cover', false)->sortBy('page_number') as $tribute)
+                                            <div class="swiper-slide">
+                                                <div class="tribute-page">
+                                                    <img src="{{ asset('storage/' . $tribute->image_path) }}"
+                                                        alt="Tribute Page {{ $tribute->page_number ?? '' }}" class="tribute-image">
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        </div>
+                                        <!-- Add navigation buttons -->
+                                        <div class="swiper-button-prev"></div>
+                                        <div class="swiper-button-next"></div>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -1168,5 +1225,151 @@
         }
     }
 </style>
+
+
+
+<!-- tributes  -->
+<style>
+    /* Tribute section styles */
+    .tribute-content {
+        padding: 30px 0;
+        background: #f9f9f9;
+    }
+
+    .tribute-swiper {
+        width: 90%;
+        max-width: 1000px;
+        height: 590px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        background: #fff;
+        border-radius: 5px;
+    }
+
+    .tribute-page {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        padding: 20px 0;
+        box-sizing: border-box;
+    }
+
+    .tribute-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: #8B0000 !important;
+        background: rgba(255, 255, 255, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+        font-size: 10px !important;
+        font-weight: bold;
+    }
+
+    /* Book effect styling */
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 80%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .swiper-slide-active,
+    .swiper-slide-duplicate-active {
+        opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+        .tribute-swiper {
+            height: 100%;
+            width: 100%;
+        }
+
+
+        .tribute-page {
+            padding: 0 0;
+        }
+
+        .tribute-content {
+            padding: 5px 0;
+            background: #f9f9f9;
+        }
+
+
+        .tribute-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
+        }
+
+        .swiper-button-next {
+            right: 0px !important;
+            /* left: 0; */
+        }
+
+        .swiper-button-prev {
+            left: 0px !important;
+
+        }
+    }
+</style>
+<script>
+    // Initialize Swiper with book effect
+    document.addEventListener('DOMContentLoaded', function() {
+        var tributeSwiper = new Swiper('.tribute-swiper', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            loop: false,
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 5,
+                slideShadows: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            // Simulate book page turning
+            on: {
+                slideChange: function() {
+                    // Add any additional effects during slide change
+                },
+            }
+        });
+
+        // Make sure to initialize Swiper when tab is shown
+        $('a[href="#tributes"]').on('shown.bs.tab', function(e) {
+            tributeSwiper.update();
+        });
+    });
+</script>
 
 @endsection

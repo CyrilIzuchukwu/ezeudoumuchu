@@ -134,11 +134,11 @@
                                 data-toggle="tab">Photographs
                             </a>
                         </li>
-                        <li
+                        <!-- <li
                             class="{{ request()->has('tab') && request()->get('tab') == 'condolences' ? 'active' : '' }}">
                             <a href="#condolences" aria-controls="Condolences" role="tab"
                                 data-toggle="tab">Condolences</a>
-                        </li>
+                        </li> -->
 
                     </ul>
 

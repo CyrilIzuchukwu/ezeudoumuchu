@@ -72,8 +72,10 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 
-
-
+    <audio id="tributeAudio" preload="auto" volume="1">
+        <source src="{{ asset('assets/audios/tribute.mp3') }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
 </body>
 

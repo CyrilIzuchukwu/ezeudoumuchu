@@ -542,6 +542,8 @@
                             </div>
                         </div>
 
+
+
                         <div role="tabpanel" class="tab-pane " id="contact">
                             <div class="eulogy-container">
                                 <div class="memorial-header">
@@ -687,8 +689,6 @@
                             </ul>
                         </div>
 
-
-
                         <!-- tributes  -->
                         <div role="tabpanel" class="tab-pane " id="tributes">
                             <div class="eulogy-container">
@@ -794,6 +794,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 <script>
     function showToast(type, message) {
@@ -1344,95 +1347,8 @@
         }
     }
 </style>
-<!-- <script>
-    // Initialize Swiper with book effect
-    document.addEventListener('DOMContentLoaded', function() {
 
-
-        var tributeSwiper = new Swiper('.tribute-swiper', {
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            loop: false,
-            coverflowEffect: {
-                rotate: 0,
-                stretch: 0,
-                depth: 100,
-                modifier: 5,
-                slideShadows: true,
-            },
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',
-            },
-            // Simulate book page turning
-            on: {
-                slideChange: function() {
-                    // Add any additional effects during slide change
-                },
-            }
-        });
-
-        // Pause autoplay on hover
-        const swiperContainer = document.querySelector('.tribute-swiper');
-        swiperContainer.addEventListener('mouseenter', function() {
-            tributeSwiper.autoplay.stop();
-        });
-        swiperContainer.addEventListener('mouseleave', function() {
-            tributeSwiper.autoplay.start();
-        });
-
-
-        // Get the audio element
-        const tributeAudio = document.getElementById('tributeAudio');
-
-        // When tributes tab is clicked
-        document.querySelector('a[href="#tributes"]').addEventListener('click', function() {
-            tributeSwiper.slideTo(0);
-            tributeSwiper.update();
-
-            if (tributeAudio) {
-                tributeAudio.currentTime = 0;
-                tributeAudio.play().catch(err => {
-                    console.warn('Autoplay blocked:', err);
-                });
-            }
-        });
-
-
-        // Stop the audio when switching tabs (Bootstrap tabs)
-        document.querySelectorAll('[data-toggle="tab"]').forEach(tab => {
-            tab.addEventListener('shown.bs.tab', function(e) {
-                if (e.target.getAttribute('href') !== '#tributes' && tributeAudio) {
-                    tributeAudio.pause();
-                    tributeAudio.currentTime = 0;
-                }
-            });
-        });
-
-        // Stop the audio when the page is hidden (e.g. switching apps or tabs)
-        document.addEventListener('visibilitychange', function() {
-            if (document.hidden && tributeAudio) {
-                tributeAudio.pause();
-                tributeAudio.currentTime = 0;
-            }
-        });
-
-        // document.querySelector('a[href="#tributes"]').addEventListener('click', function() {
-        //     tributeSwiper.slideTo(0);
-        //     tributeSwiper.update();
-        // });
-    });
-</script> -->
-
+<!-- swipper script  -->
 <script>
     // Initialize Swiper with book effect
     document.addEventListener('DOMContentLoaded', function() {
@@ -1475,8 +1391,8 @@
 </script>
 
 
-
-<script>
+<!-- tribute script  -->
+<!-- <script>
     document.addEventListener('DOMContentLoaded', function() {
         const tributeAudio = document.getElementById('tributeAudio');
         const tributeTabLink = document.getElementById('tributeTab');
@@ -1598,6 +1514,249 @@
             if (isTribute) {
                 tributeTabPanel.classList.add('active');
                 fadeInAudio();
+            }
+        }
+
+        handleInitialTab();
+    });
+</script> -->
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tributeAudio = document.getElementById('tributeAudio');
+        const tributeTabLink = document.getElementById('tributeTab');
+        const tributeTabPanel = document.getElementById('tributes');
+        const tabLinks = document.querySelectorAll('ul.nav-tabs a[href^="#"]');
+        const toggleBtn = document.getElementById('toggleTributeAudio');
+        let fadeInterval;
+        let shouldResume = false;
+        let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+        // iOS requires direct user interaction to start audio
+        let audioInitialized = false;
+
+        function isTributeTabActive() {
+            return tributeTabPanel.classList.contains('active') || location.hash === '#tributes';
+        }
+
+        function playAudio(fromStart = false) {
+            if (!tributeAudio) return;
+
+            // On iOS, we need to ensure audio is only played after direct user interaction
+            if (isIOS && !audioInitialized) {
+                return;
+            }
+
+            clearInterval(fadeInterval);
+            tributeAudio.volume = 1;
+            if (fromStart) tributeAudio.currentTime = 0;
+            tributeAudio.loop = true;
+
+            // iOS requires this to be in a user gesture handler
+            const playPromise = tributeAudio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    updateToggleBtn();
+                }).catch(err => {
+                    console.warn('Playback prevented:', err);
+                    // On iOS, we might need to show a play button
+                    if (isIOS) {
+                        toggleBtn.style.display = 'block';
+                    }
+                });
+            }
+        }
+
+        function fadeOutAudio(callback = () => {}) {
+            if (!tributeAudio || tributeAudio.paused) return;
+            const steps = 10;
+            const stepTime = 100;
+            const volumeStep = tributeAudio.volume / steps;
+            clearInterval(fadeInterval);
+            fadeInterval = setInterval(() => {
+                if (tributeAudio.volume > volumeStep) {
+                    tributeAudio.volume -= volumeStep;
+                } else {
+                    tributeAudio.volume = 0;
+                    tributeAudio.pause();
+                    clearInterval(fadeInterval);
+                    callback();
+                    updateToggleBtn();
+                }
+            }, stepTime);
+        }
+
+        function fadeInAudio() {
+            if (!tributeAudio) return;
+
+            // On iOS, we need to ensure audio is only played after direct user interaction
+            if (isIOS && !audioInitialized) {
+                initializeAudio();
+                return;
+            }
+
+            clearInterval(fadeInterval);
+            tributeAudio.volume = 0;
+            tributeAudio.loop = true;
+
+            const playPromise = tributeAudio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    const steps = 10;
+                    const stepTime = 100;
+                    const volumeStep = 1 / steps;
+                    fadeInterval = setInterval(() => {
+                        if (tributeAudio.volume < 1 - volumeStep) {
+                            tributeAudio.volume += volumeStep;
+                        } else {
+                            tributeAudio.volume = 1;
+                            clearInterval(fadeInterval);
+                        }
+                    }, stepTime);
+                    updateToggleBtn();
+                }).catch(err => {
+                    console.warn('Playback prevented:', err);
+                    if (isIOS) {
+                        toggleBtn.style.display = 'block';
+                    }
+                });
+            }
+        }
+
+        function updateToggleBtn() {
+            if (!toggleBtn || !tributeAudio) return;
+            toggleBtn.innerHTML = tributeAudio.paused ? '🔈 Play' : '🔇 Pause';
+        }
+
+        // Initialize audio on iOS through user interaction
+        function initializeAudio() {
+            if (!isIOS || audioInitialized) return;
+
+            // Create a silent buffer and play it to unlock audio on iOS
+            const buffer = tributeAudio.context.createBuffer(1, 1, 22050);
+            const source = tributeAudio.context.createBufferSource();
+            source.buffer = buffer;
+            source.connect(tributeAudio.context.destination);
+            source.start(0);
+
+            // Set volume to 0 and play
+            tributeAudio.volume = 0;
+            tributeAudio.play().then(() => {
+                tributeAudio.pause();
+                audioInitialized = true;
+                // Now we can play audio properly
+                fadeInAudio();
+            }).catch(err => {
+                console.warn('iOS audio initialization failed:', err);
+            });
+        }
+
+        // Tab switching
+        tabLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // On iOS, prevent default and handle tab switching manually
+                if (isIOS) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetPanel = document.querySelector(targetId);
+                    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+                    if (targetPanel) targetPanel.classList.add('active');
+
+                    // Update URL without triggering navigation
+                    history.pushState(null, null, targetId);
+
+                    if (targetId === '#tributes') {
+                        playAudio(true);
+                    } else {
+                        fadeOutAudio();
+                    }
+                } else {
+                    const targetId = this.getAttribute('href');
+                    const targetPanel = document.querySelector(targetId);
+                    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+                    if (targetPanel) targetPanel.classList.add('active');
+                    if (targetId === '#tributes') {
+                        playAudio(true);
+                    } else {
+                        fadeOutAudio();
+                    }
+                }
+            });
+        });
+
+        // Handle back/forward navigation
+        window.addEventListener('popstate', function() {
+            const hash = window.location.hash;
+            const isTribute = hash === '#tributes';
+
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+            if (isTribute) {
+                tributeTabPanel.classList.add('active');
+                playAudio(true);
+            } else {
+                fadeOutAudio();
+            }
+        });
+
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                if (isTributeTabActive() && !tributeAudio.paused) {
+                    tributeAudio.pause();
+                    shouldResume = true;
+                    updateToggleBtn();
+                }
+            } else {
+                if (isTributeTabActive() && tributeAudio.paused && shouldResume) {
+                    fadeInAudio();
+                    shouldResume = false;
+                }
+            }
+        });
+
+        tributeAudio.addEventListener('ended', function() {
+            if (isTributeTabActive()) {
+                tributeAudio.currentTime = 0;
+                tributeAudio.play().catch(err => console.warn('Autoplay blocked:', err));
+            }
+        });
+
+        // Manual toggle button - crucial for iOS
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function() {
+                // On iOS, first interaction initializes audio
+                if (isIOS && !audioInitialized) {
+                    initializeAudio();
+                    return;
+                }
+
+                if (tributeAudio.paused) {
+                    fadeInAudio();
+                } else {
+                    fadeOutAudio();
+                }
+            });
+
+            // Show the toggle button on iOS by default
+            if (isIOS) {
+                toggleBtn.style.display = 'block';
+            }
+        }
+
+        function handleInitialTab() {
+            const tabParam = new URLSearchParams(window.location.search).get('tab');
+            const hash = window.location.hash;
+            const isTribute = tabParam === 'tributes' || hash === '#tributes' || tributeTabPanel.classList.contains('active');
+
+            if (isTribute) {
+                tributeTabPanel.classList.add('active');
+                // On iOS, don't autoplay - wait for user interaction
+                if (!isIOS) {
+                    fadeInAudio();
+                }
             }
         }
 

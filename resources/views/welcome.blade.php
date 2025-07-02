@@ -1526,16 +1526,13 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const tributeAudio = document.getElementById('tributeAudio');
-        const tributeTabLink = document.getElementById('tributeTab');
         const tributeTabPanel = document.getElementById('tributes');
         const tabLinks = document.querySelectorAll('ul.nav-tabs a[href^="#"]');
         const toggleBtn = document.getElementById('toggleTributeAudio');
-        let fadeInterval;
         let shouldResume = false;
-        let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-        // iOS requires direct user interaction to start audio
-        let audioInitialized = false;
+        // Detect iOS
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
         function isTributeTabActive() {
             return tributeTabPanel.classList.contains('active') || location.hash === '#tributes';
@@ -1543,88 +1540,15 @@
 
         function playAudio(fromStart = false) {
             if (!tributeAudio) return;
-
-            // On iOS, we need to ensure audio is only played after direct user interaction
-            if (isIOS && !audioInitialized) {
-                return;
-            }
-
-            clearInterval(fadeInterval);
-            tributeAudio.volume = 1;
             if (fromStart) tributeAudio.currentTime = 0;
             tributeAudio.loop = true;
-
-            // iOS requires this to be in a user gesture handler
-            const playPromise = tributeAudio.play();
-
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    updateToggleBtn();
-                }).catch(err => {
-                    console.warn('Playback prevented:', err);
-                    // On iOS, we might need to show a play button
-                    if (isIOS) {
-                        toggleBtn.style.display = 'block';
-                    }
-                });
-            }
+            tributeAudio.play().then(updateToggleBtn).catch(err => console.warn('Autoplay blocked:', err));
         }
 
-        function fadeOutAudio(callback = () => {}) {
-            if (!tributeAudio || tributeAudio.paused) return;
-            const steps = 10;
-            const stepTime = 100;
-            const volumeStep = tributeAudio.volume / steps;
-            clearInterval(fadeInterval);
-            fadeInterval = setInterval(() => {
-                if (tributeAudio.volume > volumeStep) {
-                    tributeAudio.volume -= volumeStep;
-                } else {
-                    tributeAudio.volume = 0;
-                    tributeAudio.pause();
-                    clearInterval(fadeInterval);
-                    callback();
-                    updateToggleBtn();
-                }
-            }, stepTime);
-        }
-
-        function fadeInAudio() {
+        function pauseAudio() {
             if (!tributeAudio) return;
-
-            // On iOS, we need to ensure audio is only played after direct user interaction
-            if (isIOS && !audioInitialized) {
-                initializeAudio();
-                return;
-            }
-
-            clearInterval(fadeInterval);
-            tributeAudio.volume = 0;
-            tributeAudio.loop = true;
-
-            const playPromise = tributeAudio.play();
-
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    const steps = 10;
-                    const stepTime = 100;
-                    const volumeStep = 1 / steps;
-                    fadeInterval = setInterval(() => {
-                        if (tributeAudio.volume < 1 - volumeStep) {
-                            tributeAudio.volume += volumeStep;
-                        } else {
-                            tributeAudio.volume = 1;
-                            clearInterval(fadeInterval);
-                        }
-                    }, stepTime);
-                    updateToggleBtn();
-                }).catch(err => {
-                    console.warn('Playback prevented:', err);
-                    if (isIOS) {
-                        toggleBtn.style.display = 'block';
-                    }
-                });
-            }
+            tributeAudio.pause();
+            updateToggleBtn();
         }
 
         function updateToggleBtn() {
@@ -1632,136 +1556,57 @@
             toggleBtn.innerHTML = tributeAudio.paused ? '🔈 Play' : '🔇 Pause';
         }
 
-        // Initialize audio on iOS through user interaction
-        function initializeAudio() {
-            if (!isIOS || audioInitialized) return;
-
-            // Create a silent buffer and play it to unlock audio on iOS
-            const buffer = tributeAudio.context.createBuffer(1, 1, 22050);
-            const source = tributeAudio.context.createBufferSource();
-            source.buffer = buffer;
-            source.connect(tributeAudio.context.destination);
-            source.start(0);
-
-            // Set volume to 0 and play
-            tributeAudio.volume = 0;
-            tributeAudio.play().then(() => {
-                tributeAudio.pause();
-                audioInitialized = true;
-                // Now we can play audio properly
-                fadeInAudio();
-            }).catch(err => {
-                console.warn('iOS audio initialization failed:', err);
-            });
-        }
-
         // Tab switching
         tabLinks.forEach(link => {
             link.addEventListener('click', function(e) {
-                // On iOS, prevent default and handle tab switching manually
-                if (isIOS) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetPanel = document.querySelector(targetId);
-                    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-                    if (targetPanel) targetPanel.classList.add('active');
-
-                    // Update URL without triggering navigation
-                    history.pushState(null, null, targetId);
-
-                    if (targetId === '#tributes') {
-                        playAudio(true);
-                    } else {
-                        fadeOutAudio();
-                    }
+                const targetId = this.getAttribute('href');
+                const targetPanel = document.querySelector(targetId);
+                document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+                if (targetPanel) targetPanel.classList.add('active');
+                if (targetId === '#tributes') {
+                    playAudio(true);
                 } else {
-                    const targetId = this.getAttribute('href');
-                    const targetPanel = document.querySelector(targetId);
-                    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-                    if (targetPanel) targetPanel.classList.add('active');
-                    if (targetId === '#tributes') {
-                        playAudio(true);
-                    } else {
-                        fadeOutAudio();
-                    }
+                    pauseAudio();
                 }
             });
         });
 
-        // Handle back/forward navigation
-        window.addEventListener('popstate', function() {
-            const hash = window.location.hash;
-            const isTribute = hash === '#tributes';
-
-            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-            if (isTribute) {
-                tributeTabPanel.classList.add('active');
-                playAudio(true);
-            } else {
-                fadeOutAudio();
-            }
-        });
-
+        // Handle visibility change (pause when tab is hidden)
         document.addEventListener('visibilitychange', function() {
-            if (document.hidden) {
-                if (isTributeTabActive() && !tributeAudio.paused) {
-                    tributeAudio.pause();
-                    shouldResume = true;
-                    updateToggleBtn();
-                }
-            } else {
-                if (isTributeTabActive() && tributeAudio.paused && shouldResume) {
-                    fadeInAudio();
-                    shouldResume = false;
-                }
+            if (document.hidden && isTributeTabActive() && !tributeAudio.paused) {
+                pauseAudio();
+                shouldResume = true;
+            } else if (!document.hidden && isTributeTabActive() && tributeAudio.paused && shouldResume) {
+                playAudio();
+                shouldResume = false;
             }
         });
 
-        tributeAudio.addEventListener('ended', function() {
-            if (isTributeTabActive()) {
-                tributeAudio.currentTime = 0;
-                tributeAudio.play().catch(err => console.warn('Autoplay blocked:', err));
-            }
-        });
-
-        // Manual toggle button - crucial for iOS
+        // Manual toggle button
         if (toggleBtn) {
             toggleBtn.addEventListener('click', function() {
-                // On iOS, first interaction initializes audio
-                if (isIOS && !audioInitialized) {
-                    initializeAudio();
-                    return;
-                }
-
                 if (tributeAudio.paused) {
-                    fadeInAudio();
+                    playAudio();
                 } else {
-                    fadeOutAudio();
+                    pauseAudio();
                 }
             });
-
-            // Show the toggle button on iOS by default
-            if (isIOS) {
-                toggleBtn.style.display = 'block';
-            }
         }
 
+        // Handle initial state (if hash is already set to #tributes)
         function handleInitialTab() {
             const tabParam = new URLSearchParams(window.location.search).get('tab');
             const hash = window.location.hash;
             const isTribute = tabParam === 'tributes' || hash === '#tributes' || tributeTabPanel.classList.contains('active');
-
             if (isTribute) {
                 tributeTabPanel.classList.add('active');
-                // On iOS, don't autoplay - wait for user interaction
-                if (!isIOS) {
-                    fadeInAudio();
-                }
+                playAudio();
             }
         }
 
         handleInitialTab();
     });
 </script>
+
 
 @endsection

@@ -495,53 +495,6 @@
 
 
 
-                        <!-- eulogy  -->
-                        <!-- <div role="tabpanel" class="tab-pane " id="eulogy">
-                            <div class="eulogy-container">
-                                <div class="memorial-header">
-                                    <div class="gold-bar"></div>
-                                    <h1 class="text-center">Eulogy for Chief Sir Sylvester Ezeokenwa Ezeudo Umuchu</span></h1>
-                                    <div class="gold-bar"></div>
-                                </div>
-
-                                <div class="eulogy-content">
-
-                                    <div class="eulogy-text">
-
-                                        <div class="legacy-section">
-                                            <p>As we stand in solidarity, united in our grief and in celebration of a life that touched countless hearts – Chief Sir Sylvester Ezeokenwa, Ezeudo Umuchu. A stalwart of Nigerian politics, a community leader and a shining example of leadership, integrity, and service.</p>
-                                        </div>
-
-                                        <div class="legacy-section">
-                                            <p>Chief Ezeokenwa's legacy is etched in the annals of our nation's history. As the first Chairman of the All Progressives Grand Alliance (APGA) in Onitsha South Local Government Area (2003-2015), he played a pivotal role in shaping the party's destiny and laid the foundation for the party's enduring success in the local governmnet. His leadership vision, dedication, and unwavering commitment to the party's ideals paved the way for APGA's continued governance in the state since 2006.</p>
-                                        </div>
-
-                                        <div class="legacy-section">
-                                            <p>Beyond politics, Chief Ezeokenwa's impact in umuchu was profound. As President-General of the Umuchu Community, he worked tirelessly to promote unity, progress, and development. His selflessness, wisdom, and compassion earned him the respect and admiration of all who knew him.</p>
-                                        </div>
-
-                                        <div class="legacy-section">
-                                            <p>As a devout Catholic Christian and Knight of St. John International, Chief Ezeokenwa's faith was the bedrock of his actions. His kindness, generosity, and humility inspired countless individuals, and his legacy continues to be a beacon of hope for Umuchu Chirstian community.</p>
-                                        </div>
-
-                                        <div class="legacy-section">
-                                            <p>As a father, Chief Ezeokenwa's pride and joy was his children. One of them, Barr. Sly Ezeokenwa, the current National Chairman of APGA. He instilled in children the values of hard work, integrity, and service to others, and his legacy lives on through them.</p>
-                                        </div>
-
-
-                                        <div class="legacy-section">
-                                            <p>Chief Ezeokenwa's passing is a significant loss to our nation's democratic journey. His contributions to the growth of APGA and his commitment to public service will be deeply missed. Yet, his legacy endures, inspiring future generations to emulate his example.</p>
-                                        </div>
-
-
-                                        <div class="signature-block">
-                                            <p class="final-line">Jee nke oma Ezeudo Umuchu.</p>
-                                            <div class="signature-line"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
 
                         <div role="tabpanel" class="tab-pane" id="eulogy">
                             <div class="eulogy-content">
@@ -595,7 +548,7 @@
                                     <div class="image-wrapper">
                                         @foreach($eulogies as $eulogy)
                                         <div class="eulogy-image">
-                                            <img src="{{ asset('storage/' . $eulogy->image_path) }}" alt="Eulogy Image">
+                                            <img src="{{ asset('storage/' . $eulogy->image_path) }}" alt="Eulogy Image" loading="lazy">
                                         </div>
                                         @endforeach
                                     </div>
@@ -1553,7 +1506,7 @@
     }
 
     .eulogy-swiper {
-        width: 90%;
+        width: 100%;
         max-width: 1000px;
         height: 700px;
         margin: 0 auto;
@@ -1561,7 +1514,7 @@
         overflow-y: auto;
         background: #fff;
         border-radius: 5px;
-        padding: 20px;
+        padding: 10px;
         box-sizing: border-box;
     }
 
@@ -1583,10 +1536,10 @@
     }
 
     .image-wrapper {
-        margin-top: 40px;
+        margin-top: 50px;
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 40px;
     }
 
     .eulogy-swiper .eulogy-image img {
@@ -1621,7 +1574,7 @@
         }
 
         .image-wrapper {
-            gap: 20px;
+            gap: 30px;
             margin-top: 30px;
         }
     }

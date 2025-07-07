@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\CondolenceMail;
 use App\Models\Condolence;
+use App\Models\Eulogy;
 use App\Models\Tribute;
 use App\Notifications\CondolenceNotification;
 use Illuminate\Http\Request;
@@ -19,8 +20,12 @@ class TributeController extends Controller
             ->orderByRaw('ISNULL(page_number), page_number asc')
             ->get();
 
+        // Get eulogies ordered by page number (nulls last)
+        $eulogies = Eulogy::orderByRaw('ISNULL(page_number), page_number asc')
+            ->get();
+
         $condolences = Condolence::latest()->paginate(5);
-        return view('welcome', compact('condolences', 'tributes'));
+        return view('welcome', compact('condolences', 'tributes', 'eulogies'));
     }
 
     public function tributeStore(Request $request)

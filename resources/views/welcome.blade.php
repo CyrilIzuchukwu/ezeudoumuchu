@@ -495,7 +495,8 @@
 
 
 
-                        <div role="tabpanel" class="tab-pane " id="eulogy">
+                        <!-- eulogy  -->
+                        <!-- <div role="tabpanel" class="tab-pane " id="eulogy">
                             <div class="eulogy-container">
                                 <div class="memorial-header">
                                     <div class="gold-bar"></div>
@@ -538,6 +539,67 @@
                                             <div class="signature-line"></div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div role="tabpanel" class="tab-pane" id="eulogy">
+                            <div class="eulogy-content">
+                                <div class="eulogy-swiper">
+
+                                    <div class="">
+                                        <!-- First slide - text content -->
+                                        <div class="eulogy-slide">
+                                            <div class="eulogy-text">
+                                                <div class="memorial-header">
+                                                    <div class="gold-bar"></div>
+                                                    <h1 class="text-center">Eulogy for Chief Sir Sylvester Ezeokenwa Ezeudo Umuchu</h1>
+                                                    <div class="gold-bar"></div>
+                                                </div>
+
+                                                <div class="legacy-section">
+                                                    <p>As we stand in solidarity, united in our grief and in celebration of a life that touched countless hearts – Chief Sir Sylvester Ezeokenwa, Ezeudo Umuchu. A stalwart of Nigerian politics, a community leader and a shining example of leadership, integrity, and service.</p>
+                                                </div>
+
+                                                <div class="legacy-section">
+                                                    <p>Chief Ezeokenwa's legacy is etched in the annals of our nation's history. As the first Chairman of the All Progressives Grand Alliance (APGA) in Onitsha South Local Government Area (2003-2015), he played a pivotal role in shaping the party's destiny and laid the foundation for the party's enduring success in the local governmnet. His leadership vision, dedication, and unwavering commitment to the party's ideals paved the way for APGA's continued governance in the state since 2006.</p>
+                                                </div>
+
+                                                <div class="legacy-section">
+                                                    <p>Beyond politics, Chief Ezeokenwa's impact in umuchu was profound. As President-General of the Umuchu Community, he worked tirelessly to promote unity, progress, and development. His selflessness, wisdom, and compassion earned him the respect and admiration of all who knew him.</p>
+                                                </div>
+
+                                                <div class="legacy-section">
+                                                    <p>As a devout Catholic Christian and Knight of St. John International, Chief Ezeokenwa's faith was the bedrock of his actions. His kindness, generosity, and humility inspired countless individuals, and his legacy continues to be a beacon of hope for Umuchu Chirstian community.</p>
+                                                </div>
+
+                                                <div class="legacy-section">
+                                                    <p>As a father, Chief Ezeokenwa's pride and joy was his children. One of them, Barr. Sly Ezeokenwa, the current National Chairman of APGA. He instilled in children the values of hard work, integrity, and service to others, and his legacy lives on through them.</p>
+                                                </div>
+
+                                                <div class="legacy-section">
+                                                    <p>Chief Ezeokenwa's passing is a significant loss to our nation's democratic journey. His contributions to the growth of APGA and his commitment to public service will be deeply missed. Yet, his legacy endures, inspiring future generations to emulate his example.</p>
+                                                </div>
+
+                                                <div class="signature-block">
+                                                    <p class="final-line">Jee nke oma Ezeudo Umuchu.</p>
+                                                    <div class="signature-line"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dynamic slides for uploaded eulogy images -->
+
+                                    </div>
+
+                                    <div class="image-wrapper">
+                                        @foreach($eulogies as $eulogy)
+                                        <div class="eulogy-image">
+                                            <img src="{{ asset('storage/' . $eulogy->image_path) }}" alt="Eulogy Image">
+                                        </div>
+                                        @endforeach
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -1366,7 +1428,7 @@
                 slideShadows: true,
             },
             autoplay: {
-                delay: 4000,
+                delay: 6000,
                 disableOnInteraction: false,
             },
             navigation: {
@@ -1391,138 +1453,8 @@
 </script>
 
 
+
 <!-- tribute script  -->
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const tributeAudio = document.getElementById('tributeAudio');
-        const tributeTabLink = document.getElementById('tributeTab');
-        const tributeTabPanel = document.getElementById('tributes');
-        const tabLinks = document.querySelectorAll('ul.nav-tabs a[href^="#"]');
-        const toggleBtn = document.getElementById('toggleTributeAudio');
-        let fadeInterval;
-        let shouldResume = false;
-
-        function isTributeTabActive() {
-            return tributeTabPanel.classList.contains('active') || location.hash === '#tributes';
-        }
-
-        function playAudio(fromStart = false) {
-            if (!tributeAudio) return;
-            clearInterval(fadeInterval);
-            tributeAudio.volume = 1;
-            if (fromStart) tributeAudio.currentTime = 0;
-            tributeAudio.loop = true;
-            tributeAudio.play().then(() => updateToggleBtn()).catch(err => console.warn('Autoplay blocked:', err));
-        }
-
-        function fadeOutAudio(callback = () => {}) {
-            if (!tributeAudio || tributeAudio.paused) return;
-            const steps = 10;
-            const stepTime = 100;
-            const volumeStep = tributeAudio.volume / steps;
-            clearInterval(fadeInterval);
-            fadeInterval = setInterval(() => {
-                if (tributeAudio.volume > volumeStep) {
-                    tributeAudio.volume -= volumeStep;
-                } else {
-                    tributeAudio.volume = 0;
-                    tributeAudio.pause();
-                    clearInterval(fadeInterval);
-                    callback();
-                    updateToggleBtn();
-                }
-            }, stepTime);
-        }
-
-        function fadeInAudio() {
-            if (!tributeAudio) return;
-            clearInterval(fadeInterval);
-            tributeAudio.volume = 0;
-            tributeAudio.loop = true;
-            tributeAudio.play().catch(err => console.warn('Autoplay blocked:', err));
-            const steps = 10;
-            const stepTime = 100;
-            const volumeStep = 1 / steps;
-            fadeInterval = setInterval(() => {
-                if (tributeAudio.volume < 1 - volumeStep) {
-                    tributeAudio.volume += volumeStep;
-                } else {
-                    tributeAudio.volume = 1;
-                    clearInterval(fadeInterval);
-                }
-            }, stepTime);
-            updateToggleBtn();
-        }
-
-        function updateToggleBtn() {
-            if (!toggleBtn || !tributeAudio) return;
-            toggleBtn.innerHTML = tributeAudio.paused ? '🔈 Play' : '🔇 Pause';
-        }
-
-        // Tab switching
-        tabLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                const targetId = this.getAttribute('href');
-                const targetPanel = document.querySelector(targetId);
-                document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-                if (targetPanel) targetPanel.classList.add('active');
-                if (targetId === '#tributes') {
-                    playAudio(true);
-                } else {
-                    fadeOutAudio();
-                }
-            });
-        });
-
-        document.addEventListener('visibilitychange', function() {
-            if (document.hidden) {
-                if (isTributeTabActive() && !tributeAudio.paused) {
-                    tributeAudio.pause();
-                    shouldResume = true;
-                    updateToggleBtn();
-                }
-            } else {
-                if (isTributeTabActive() && tributeAudio.paused && shouldResume) {
-                    fadeInAudio();
-                    shouldResume = false;
-                }
-            }
-        });
-
-        tributeAudio.addEventListener('ended', function() {
-            if (isTributeTabActive()) {
-                tributeAudio.currentTime = 0;
-                tributeAudio.play();
-            }
-        });
-
-        // Manual toggle button
-        if (toggleBtn) {
-            toggleBtn.addEventListener('click', function() {
-                if (tributeAudio.paused) {
-                    fadeInAudio();
-                } else {
-                    fadeOutAudio();
-                }
-            });
-        }
-
-        function handleInitialTab() {
-            const tabParam = new URLSearchParams(window.location.search).get('tab');
-            const hash = window.location.hash;
-            const isTribute = tabParam === 'tributes' || hash === '#tributes' || tributeTabPanel.classList.contains('active');
-            if (isTribute) {
-                tributeTabPanel.classList.add('active');
-                fadeInAudio();
-            }
-        }
-
-        handleInitialTab();
-    });
-</script> -->
-
-
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const tributeAudio = document.getElementById('tributeAudio');
@@ -1607,6 +1539,93 @@
         handleInitialTab();
     });
 </script>
+
+
+
+
+
+<!-- eulogy css  -->
+<style>
+    /* Eulogy section styles */
+    .eulogy-content {
+        /* padding: 30px 0;
+        background: #f9f9f9; */
+    }
+
+    .eulogy-swiper {
+        width: 90%;
+        max-width: 1000px;
+        height: 700px;
+        margin: 0 auto;
+        position: relative;
+        overflow-y: auto;
+        background: #fff;
+        border-radius: 5px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+
+    /* Text content styling */
+
+    .signature-block {
+        margin-top: 20px;
+        text-align: right;
+    }
+
+
+    .signature-line {
+        display: inline-block;
+        width: 150px;
+        height: 2px;
+        background-color: #333;
+        margin-top: 5px;
+    }
+
+    .image-wrapper {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .eulogy-swiper .eulogy-image img {
+        border-radius: 5px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        width: 100%;
+        height: auto;
+    }
+
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+        .memorial-header {
+            margin-bottom: 20px;
+        }
+
+        .eulogy-swiper {
+            height: 700px;
+            width: 100%;
+            padding: 2px;
+        }
+
+        .eulogy-swiper .eulogy-image {
+            padding: 5px;
+        }
+
+        .eulogy-swiper .eulogy-image img {
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-wrapper {
+            gap: 20px;
+            margin-top: 30px;
+        }
+    }
+</style>
 
 
 @endsection

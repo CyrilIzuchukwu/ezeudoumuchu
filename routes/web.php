@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminEulogyController;
 use App\Http\Controllers\Admin\AdminTributeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactUsController;
@@ -35,6 +36,19 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
     // Show the tribute upload form
     Route::get('/tributes/upload', [AdminTributeController::class, 'showUploadForm'])->name('admin.tributes.upload');
 
-    // Store tribute image
+    // Store tribute
     Route::post('/tributes/upload', [AdminTributeController::class, 'storeTribute'])->name('admin.tributes.store');
+
+
+
+    Route::prefix('eulogy')->group(function () {
+        Route::get('/', [AdminEulogyController::class, 'index'])->name('admin.eulogy.index');
+        // Show the eulogy upload form
+        Route::get('/upload', [AdminEulogyController::class, 'showUploadForm'])->name('admin.eulogy.upload');
+        // Store eulogy
+        Route::post('/upload', [AdminEulogyController::class, 'storeEulogy'])->name('admin.eulogy.store');
+        Route::get('/{eulogy}/edit', [AdminEulogyController::class, 'edit'])->name('admin.eulogy.edit');
+        Route::put('/{eulogy}', [AdminEulogyController::class, 'update'])->name('admin.eulogy.update');
+        Route::delete('/{eulogy}', [AdminEulogyController::class, 'destroy'])->name('admin.eulogy.destroy');
+    });
 });

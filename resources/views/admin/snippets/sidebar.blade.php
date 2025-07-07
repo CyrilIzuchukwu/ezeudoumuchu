@@ -17,7 +17,7 @@
             <a class="side-menu__item" data-bs-toggle="slide" href="{{ route('admin.dashboard') }}"><i class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Dashboard</span></a>
         </li>
         <li>
-            <h3>Tribute Uploads</h3>
+            <h3>Uploads</h3>
         </li>
         <!-- <li>
             <a class="side-menu__item" href=""><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Widgets</span></a>
@@ -27,6 +27,14 @@
             <ul class="slide-menu">
                 <li><a href="{{ route('admin.tributes.upload') }}" class="slide-item">Upload</a></li>
                 <li><a href="" class="slide-item">Tribute List</a></li>
+            </ul>
+        </li>
+
+        <li class="slide">
+            <a class="side-menu__item" data-bs-toggle="slide" href="#"><i class="side-menu__icon fe fe-command"></i><span class="side-menu__label">Eulogy</span><i class="angle fa fa-angle-right"></i></a>
+            <ul class="slide-menu">
+                <li><a href="{{ route('admin.eulogy.upload') }}" class="slide-item">Upload</a></li>
+                <li><a href="{{ route('admin.eulogy.index') }}" class="slide-item">Eulogy List</a></li>
             </ul>
         </li>
     </ul>
@@ -57,7 +65,7 @@
     }
 
 
-    #back-to-top:hover{
+    #back-to-top:hover {
         border: 2px solid #8B0000 !important;
         color: #8B0000 !important;
     }

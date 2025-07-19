@@ -1595,24 +1595,30 @@
 
 <!-- download script  -->
 <script>
-    // Modify your code to use this alternative approach
     document.getElementById('pdfDownloadBtn').addEventListener('click', function(e) {
+        // For all mobile devices, prevent default behavior completely
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             e.preventDefault();
+            e.stopPropagation(); // Add this to prevent any parent handlers
 
-            // Use this alternative download method
+            const downloadLink = this.href;
+
+            // First try: Standard download method
             const link = document.createElement('a');
-            link.href = this.href;
+            link.href = downloadLink;
             link.download = this.download;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
 
-            // Fallback after delay
+            // Fallback for iOS after 1 second
             setTimeout(() => {
-                window.open(this.href, '_blank');
+                if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                    window.open(downloadLink, '_blank');
+                }
             }, 1000);
         }
+        // Desktop browsers will use normal download behavior
     });
 </script>
 

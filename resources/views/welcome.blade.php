@@ -730,8 +730,9 @@
                                             📄 Download Tributes PDF
                                         </a>
                                         <!-- Download status element -->
-                                        <div id="downloadStatus" style="display: none; color: green; margin-top: 5px;">
-                                            ⏳ Downloading file... Please wait
+                                        <div id="downloadNotification"
+                                            style="position: fixed; top: 20px; right: 20px; background: #4CAF50; color: white; padding: 10px 15px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: none; z-index: 99999999999;">
+                                            ⏳ Downloading file...
                                         </div>
                                     </div>
 
@@ -1600,53 +1601,32 @@
 <!-- download script  -->
 <script>
     document.getElementById('pdfDownloadBtn').addEventListener('click', function(e) {
-        // For all mobile devices
+        // For mobile devices
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             e.preventDefault();
-            e.stopPropagation();
 
-            const downloadLink = this.href;
-            const statusElement = document.getElementById('downloadStatus');
+            const notification = document.getElementById('downloadNotification');
+            notification.style.display = 'block';
 
-            // Show downloading status
-            statusElement.style.display = 'block';
-            this.disabled = true;
-            this.innerHTML = '⏳ Downloading...';
+            // Hide after 3 seconds
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
 
-            // First try: Standard download method
+            // Trigger download
             const link = document.createElement('a');
-            link.href = downloadLink;
+            link.href = this.href;
             link.download = this.download;
-
-            // Add event listeners to detect if download worked
-            link.addEventListener('click', () => {
-                setTimeout(() => {
-                    statusElement.textContent = '✅ Download complete!';
-                    this.innerHTML = '📄 Download Complete';
-                    setTimeout(() => {
-                        statusElement.style.display = 'none';
-                        this.innerHTML = '📄 Download Tributes PDF';
-                        this.disabled = false;
-                    }, 3000);
-                }, 1000);
-            });
-
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
 
-            // Fallback for iOS after 2 seconds
-            setTimeout(() => {
-                if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !statusElement.textContent.includes('complete')) {
-                    statusElement.textContent = '⚠️ Opening in new tab...';
-                    window.open(downloadLink, '_blank');
-                    setTimeout(() => {
-                        statusElement.style.display = 'none';
-                        this.innerHTML = '📄 Download Tributes PDF';
-                        this.disabled = false;
-                    }, 3000);
-                }
-            }, 2000);
+            // iOS fallback
+            if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                setTimeout(() => {
+                    window.open(this.href, '_blank');
+                }, 500);
+            }
         }
     });
 </script>

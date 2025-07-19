@@ -725,9 +725,9 @@
                                         </a> -->
                                         <a href="{{ asset('storage/pdf/Ezeudo-Umuchu-Tributes-and-Condolences.pdf') }}"
                                             class="btn btn-primary"
-                                            target="_blank"
-                                            onclick="if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) { return confirm('Open PDF in new tab for better mobile viewing?'); }">
-                                            📄 View/Download Tributes
+                                            id="pdfDownloadBtn"
+                                            download="Ezeudo-Umuchu-Tributes-and-Condolences.pdf">
+                                            📄 Download Tributes PDF
                                         </a>
                                     </div>
 
@@ -1595,23 +1595,23 @@
 
 <!-- download script  -->
 <script>
-    document.querySelector('.btn-primary').addEventListener('click', function(e) {
-        // For mobile devices, prevent default and handle download manually
+    // Modify your code to use this alternative approach
+    document.getElementById('pdfDownloadBtn').addEventListener('click', function(e) {
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             e.preventDefault();
+
+            // Use this alternative download method
             const link = document.createElement('a');
             link.href = this.href;
-            link.download = 'Ezeudo-Umuchu-Tributes-and-Condolences.pdf';
+            link.download = this.download;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
 
-            // Fallback if download fails
+            // Fallback after delay
             setTimeout(() => {
-                if (!confirm('Download may have failed. Would you like to try opening the PDF instead?')) {
-                    window.open(this.href, '_blank');
-                }
-            }, 5000);
+                window.open(this.href, '_blank');
+            }, 1000);
         }
     });
 </script>

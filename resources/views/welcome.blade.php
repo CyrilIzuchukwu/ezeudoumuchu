@@ -729,6 +729,10 @@
                                             download="Ezeudo-Umuchu-Tributes-and-Condolences.pdf">
                                             📄 Download Tributes PDF
                                         </a>
+                                        <!-- Download status element -->
+                                        <div id="downloadStatus" style="display: none; color: green; margin-top: 5px;">
+                                            ⏳ Downloading file... Please wait
+                                        </div>
                                     </div>
 
                                     <div class="swiper-container tribute-swiper">
@@ -1596,29 +1600,54 @@
 <!-- download script  -->
 <script>
     document.getElementById('pdfDownloadBtn').addEventListener('click', function(e) {
-        // For all mobile devices, prevent default behavior completely
+        // For all mobile devices
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             e.preventDefault();
-            e.stopPropagation(); // Add this to prevent any parent handlers
+            e.stopPropagation();
 
             const downloadLink = this.href;
+            const statusElement = document.getElementById('downloadStatus');
+
+            // Show downloading status
+            statusElement.style.display = 'block';
+            this.disabled = true;
+            this.innerHTML = '⏳ Downloading...';
 
             // First try: Standard download method
             const link = document.createElement('a');
             link.href = downloadLink;
             link.download = this.download;
+
+            // Add event listeners to detect if download worked
+            link.addEventListener('click', () => {
+                setTimeout(() => {
+                    statusElement.textContent = '✅ Download complete!';
+                    this.innerHTML = '📄 Download Complete';
+                    setTimeout(() => {
+                        statusElement.style.display = 'none';
+                        this.innerHTML = '📄 Download Tributes PDF';
+                        this.disabled = false;
+                    }, 3000);
+                }, 1000);
+            });
+
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
 
-            // Fallback for iOS after 1 second
+            // Fallback for iOS after 2 seconds
             setTimeout(() => {
-                if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !statusElement.textContent.includes('complete')) {
+                    statusElement.textContent = '⚠️ Opening in new tab...';
                     window.open(downloadLink, '_blank');
+                    setTimeout(() => {
+                        statusElement.style.display = 'none';
+                        this.innerHTML = '📄 Download Tributes PDF';
+                        this.disabled = false;
+                    }, 3000);
                 }
-            }, 1000);
+            }, 2000);
         }
-        // Desktop browsers will use normal download behavior
     });
 </script>
 

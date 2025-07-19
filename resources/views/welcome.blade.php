@@ -719,9 +719,15 @@
                                     <div class="alert alert-info">No tributes have been uploaded yet.</div>
                                     @else
 
-                                    <div style="text-align: center; margin-bottom: 20px; margin-top: 5px;" >
-                                        <a href="{{ asset('storage/pdf/Ezeudo-Umuchu-Tributes-and-Condolences.pdf') }}" class="btn btn-primary" download>
+                                    <div style="text-align: center; margin-bottom: 20px; margin-top: 5px;">
+                                        <!-- <a href="{{ asset('storage/pdf/Ezeudo-Umuchu-Tributes-and-Condolences.pdf') }}" class="btn btn-primary" download>
                                             📄 Download Tributes PDF
+                                        </a> -->
+                                        <a href="{{ asset('storage/pdf/Ezeudo-Umuchu-Tributes-and-Condolences.pdf') }}"
+                                            class="btn btn-primary"
+                                            target="_blank"
+                                            onclick="if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) { return confirm('Open PDF in new tab for better mobile viewing?'); }">
+                                            📄 View/Download Tributes
                                         </a>
                                     </div>
 
@@ -1585,6 +1591,30 @@
         }
     }
 </style>
+
+
+<!-- download script  -->
+<script>
+    document.querySelector('.btn-primary').addEventListener('click', function(e) {
+        // For mobile devices, prevent default and handle download manually
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            e.preventDefault();
+            const link = document.createElement('a');
+            link.href = this.href;
+            link.download = 'Ezeudo-Umuchu-Tributes-and-Condolences.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Fallback if download fails
+            setTimeout(() => {
+                if (!confirm('Download may have failed. Would you like to try opening the PDF instead?')) {
+                    window.open(this.href, '_blank');
+                }
+            }, 5000);
+        }
+    });
+</script>
 
 
 @endsection

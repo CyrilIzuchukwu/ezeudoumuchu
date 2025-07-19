@@ -719,6 +719,12 @@
                                     <div class="alert alert-info">No tributes have been uploaded yet.</div>
                                     @else
 
+                                    <div style="text-align: center; margin-bottom: 20px; margin-top: 5px;" >
+                                        <a href="{{ asset('storage/pdf/Ezeudo-Umuchu-Tributes-and-Condolences.pdf') }}" class="btn btn-primary" download>
+                                            📄 Download Tributes PDF
+                                        </a>
+                                    </div>
+
                                     <div class="swiper-container tribute-swiper">
                                         <div class="swiper-wrapper">
                                             <!-- Each tribute as a page -->
